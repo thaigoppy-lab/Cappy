@@ -2,132 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 <title>Uma Musume - Specialty Priority Tester</title>
-<!-- Favicon: place Favicon.png in the same folder as this file -->
 <link rel="icon" type="image/png" href="Favicon.png">
-<link rel="apple-touch-icon" href="Favicon.png">
-<style>
-:root{--c2:#1a6eb5;--c4:#0d4f8a;--c3:#d0e8f7;--bg:#f0f6fc;--sur:#fff;--bdr:#b8d4ed;--tx:#0d2137;--tx2:#4a6080;--r:8px}
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:"Segoe UI",system-ui,sans-serif;color:var(--tx);font-size:14px;background:var(--bg);min-height:100vh}
-.tb{background:var(--c2);color:#fff;padding:7px 11px;display:flex;align-items:center;gap:6px;position:sticky;top:0;z-index:200}
-.tb-title{font-size:13px;font-weight:700;flex:1;min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
-.ltabs{display:flex;border-radius:6px;overflow:hidden;border:1.5px solid rgba(255,255,255,.4);flex-shrink:0;height:27px}
-.ltab{padding:0 11px;cursor:pointer;font-size:12px;font-weight:700;color:rgba(255,255,255,.65);display:flex;align-items:center;border-right:1px solid rgba(255,255,255,.3);transition:all .12s;user-select:none;-webkit-tap-highlight-color:transparent}
-.ltab:last-child{border-right:none}.ltab.on{background:rgba(255,255,255,.28);color:#fff}
-.ltab:hover:not(.on){background:rgba(255,255,255,.12);color:#fff}
-.tbtn{background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.35);color:#fff;border-radius:5px;padding:4px 9px;cursor:pointer;font-size:11px;white-space:nowrap;flex-shrink:0;-webkit-tap-highlight-color:transparent}
-.notice{background:#fffbeb;border-left:4px solid #f59e0b;border-bottom:1px solid #fde68a;padding:8px 34px 8px 13px;font-size:11.5px;color:#78350f;line-height:1.6;position:relative}
-.notice-ttl{font-weight:700;color:#92400e;margin-bottom:2px;font-size:12px}
-.notice-x{position:absolute;top:6px;right:9px;cursor:pointer;font-size:18px;color:#b45309;line-height:1;padding:3px;-webkit-tap-highlight-color:transparent}
-.tp{display:none;background:var(--sur);border:1px solid var(--bdr);border-radius:var(--r);padding:8px 11px;margin:5px 8px;flex-wrap:wrap;gap:6px;align-items:center}
-.tp.open{display:flex}
-.sw{width:21px;height:21px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:.12s}
-.sw:hover{border-color:var(--tx);transform:scale(1.12)}
-.tlbl{font-size:10px;color:var(--tx2);display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer}
-.wrap{padding:7px 9px 26px;max-width:940px;margin:0 auto}
-.card{background:var(--sur);border:1px solid var(--bdr);border-radius:var(--r);padding:10px 11px;margin-bottom:8px}
-.sh{display:flex;align-items:center;cursor:pointer;gap:5px;padding-bottom:5px;-webkit-tap-highlight-color:transparent}
-.st{font-size:13px;font-weight:700;color:var(--tx);flex:1;border-left:3px solid var(--c2);padding-left:6px}
-.sa{font-size:11px;color:var(--tx2);user-select:none;white-space:nowrap;flex-shrink:0}
-.hidden{display:none!important}
-.mini-ttl{font-size:10px;font-weight:700;color:var(--tx2);letter-spacing:.4px;text-transform:uppercase;margin-bottom:4px;border-left:3px solid var(--c2);padding-left:5px}
-.srow{display:flex;gap:6px;flex-wrap:wrap;align-items:flex-end}
-.fl{display:flex;flex-direction:column;gap:3px;min-width:0}
-.fl label{font-size:11px;color:var(--tx2);font-weight:600;white-space:nowrap}
-.fl input,.fl select{border:1px solid var(--bdr);border-radius:5px;padding:5px 6px;font-size:12px;color:var(--tx);background:var(--bg);outline:none;width:100px;min-width:0;-webkit-appearance:none;appearance:none}
-.fl select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%234a6080'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 7px center;padding-right:22px}
-.fl input[readonly]{background:#edf2f7;color:var(--tx2);border-color:#cbd5e0}
-.fl input:focus,.fl select:focus{border-color:var(--c2)}
-.btn{background:var(--c2);color:#fff;border:none;border-radius:5px;padding:6px 13px;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
-.btn:hover{background:var(--c4)}.btn:active{transform:scale(.97)}
-.btn.grey{background:#6b7280}.btn.grey:hover{background:#4b5563}
-.sp-box{background:linear-gradient(135deg,#fff5f5,#fff);border:1.5px solid #fca5a5;border-radius:var(--r);padding:10px 11px}
-.sp-ttl{font-size:11px;font-weight:700;color:#dc2626;margin-bottom:6px;border-left:3px solid #dc2626;padding-left:5px}
-.sp-row{display:flex;gap:8px;flex-wrap:wrap;align-items:flex-end;margin-bottom:5px}
-.spf label{font-size:11px;color:#dc2626;font-weight:600;display:block;margin-bottom:2px}
-.spf input{border:1.5px solid #fca5a5;border-radius:5px;padding:4px 6px;font-size:12px;color:var(--tx);background:#fff;width:90px;outline:none}
-.sp-res{background:#fff;border:1.5px solid #fca5a5;border-radius:5px;padding:5px 9px;font-size:11px}
-.sp-pct{font-size:16px;font-weight:700;color:#dc2626}
-.sp-steps{font-size:10px;color:var(--tx2);line-height:1.8;margin-top:3px;white-space:pre-line}
-.gtabs{display:flex;margin-bottom:7px;border-radius:5px;overflow:hidden;border:2px solid var(--c2)}
-.gtab{flex:1;padding:6px 3px;text-align:center;cursor:pointer;font-size:11px;font-weight:700;color:var(--c2);background:#fff;border-right:2px solid var(--c2);transition:background .12s,color .12s;user-select:none;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
-.gtab:last-child{border-right:none}.gtab.on{background:var(--c2);color:#fff}
-.gtab:not(.on):hover{background:var(--c3)}
-.gpanel{display:none}.gpanel.on{display:block}
-.rgrid{display:grid;gap:3px;margin-bottom:4px}
-.cell{position:relative;border:1.5px solid var(--bdr);border-radius:4px;background:var(--sur);display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:3px 2px;min-height:48px;transition:border-color .12s,opacity .15s;user-select:none;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
-.cell.locked{background:repeating-linear-gradient(45deg,var(--bg),var(--bg) 3px,var(--bdr) 3px,var(--bdr) 4px);opacity:.4}
-.cell.rl .drow{opacity:.2}.cell.rl{border:2px dashed #ef4444}.cell.rl .cx{display:block}
-.cell.sm{cursor:pointer}.cell.sm:hover{border-color:var(--c2)}.cell.sm.locked:hover{border-color:#ef4444}
-.cell.rm{cursor:pointer}.cell.rm:hover:not(.locked){border-color:#ef4444;opacity:.8}
-.dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
-.drow{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:2px;width:100%;min-height:15px;padding:0 2px;margin-bottom:2px}
-.drow.many .dot{width:7px;height:7px}
-.clbl{font-size:7px;color:var(--tx2);text-align:center;line-height:1.2;width:100%;font-weight:500}
-.cx{position:absolute;top:1px;right:2px;font-size:7px;font-weight:700;color:#ef4444;display:none}
-.cell.locked .cx{display:block}
-.tt{position:fixed;z-index:9999;background:rgba(8,18,38,.94);color:#fff;border-radius:8px;padding:8px 11px;font-size:11px;line-height:1.7;pointer-events:none;visibility:hidden;opacity:0;transition:opacity .08s;max-width:210px;box-shadow:0 4px 16px rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.12)}
-.tt.on{visibility:visible;opacity:1}
-.tt-m{font-size:12px;font-weight:700;color:#7dd3fc;margin-bottom:4px}
-.tt-r{display:flex;align-items:center;gap:5px;margin-bottom:3px}
-.tt-d{width:8px;height:8px;border-radius:50%;flex-shrink:0}
-.tt-n{color:#94a3b8;font-style:italic;font-size:10px;margin-top:2px}
-.eye-wrap{margin-bottom:6px;display:none}
-.eye-lbl{font-size:11px;color:var(--tx2);font-weight:600;margin-bottom:3px}
-.eye-row{display:flex;gap:4px;flex-wrap:wrap}
-.ebtn{display:flex;align-items:center;gap:3px;padding:3px 9px;border-radius:9px;border:1.5px solid var(--bdr);background:var(--sur);cursor:pointer;font-size:11px;font-weight:600;color:var(--tx2);transition:.15s;user-select:none;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
-.ebtn:not(.on):hover{background:var(--bg)}.ebtn.on{border-color:transparent!important;color:#fff!important}
-.edot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
-.sgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;margin-bottom:7px}
-.sc{background:var(--bg);border:1px solid var(--bdr);border-radius:var(--r);padding:6px;min-width:0}
-.sch{display:flex;align-items:center;gap:3px;margin-bottom:3px}
-.snum{width:17px;height:17px;border-radius:50%;color:#fff;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;flex-shrink:0}
-.sch input{border:none;background:none;font-size:10px;font-weight:700;color:var(--tx);outline:none;flex:1;min-width:0;width:0}
-.sf{display:flex;flex-direction:column;gap:2px;margin-bottom:3px}
-.sf label{font-size:9px;color:var(--tx2)}
-.sf input[type=number]{border:1px solid var(--bdr);border-radius:3px;padding:3px;font-size:11px;background:var(--sur);width:100%;outline:none;color:var(--tx)}
-.sf input[readonly]{background:#edf2f7;color:var(--tx2);border-color:#cbd5e0}
-.cpick{border:1px solid var(--bdr);border-radius:3px;cursor:pointer;padding:0;width:100%;height:20px}
-.trow{display:flex;align-items:center;gap:3px;margin-top:3px}
-.trow label{font-size:9px;color:var(--tx2)}
-.tog{width:28px;height:14px;background:var(--bdr);border-radius:7px;position:relative;cursor:pointer;transition:.15s;flex-shrink:0;touch-action:manipulation}
-.tog.on{background:var(--c2)}.tog::after{content:"";position:absolute;width:10px;height:10px;background:#fff;border-radius:50%;top:2px;left:2px;transition:.15s}.tog.on::after{left:16px}
-.smrow{display:flex;gap:5px;flex-wrap:wrap}
-.smbox{flex:1;min-width:55px;background:var(--bg);border:1px solid var(--bdr);border-radius:5px;padding:5px 7px;text-align:center}
-.smval{font-size:17px;font-weight:700;color:var(--c2)}
-.smlbl{font-size:9px;color:var(--tx2);margin-top:1px;line-height:1.3}
-.stbl{width:100%;border-collapse:collapse;font-size:11px;margin-bottom:4px}
-.stbl th{background:var(--bg);color:var(--tx2);font-weight:700;padding:3px 5px;text-align:center;border-bottom:1px solid var(--bdr);font-size:10px}
-.stbl td{padding:3px 5px;text-align:center;border-bottom:1px solid var(--c3)}
-.sdot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:3px;vertical-align:middle}
-.stt{display:flex;gap:3px;flex-wrap:wrap;margin-bottom:6px}
-.stab{padding:3px 9px;border-radius:9px;border:1.5px solid var(--bdr);background:var(--bg);cursor:pointer;font-size:11px;font-weight:600;color:var(--tx2);display:flex;align-items:center;gap:3px;transition:.15s;touch-action:manipulation}
-.stab .td{width:8px;height:8px;border-radius:50%;flex-shrink:0}
-.sim-tbl{width:100%;border-collapse:collapse;font-size:11px;margin-top:3px}
-.sim-tbl th{background:var(--bg);color:var(--tx2);font-weight:700;padding:3px 5px;text-align:center;border-bottom:1px solid var(--bdr)}
-.sim-tbl td{padding:2px 5px;text-align:center;border-bottom:1px solid var(--c3)}
-.bar{height:10px;border-radius:2px;display:inline-block;min-width:2px}
-.rb{background:var(--sur);border:1px solid var(--bdr);border-radius:var(--r);margin-bottom:5px}
-.rh{display:flex;align-items:center;padding:6px 9px;cursor:pointer;gap:5px;flex-wrap:wrap;-webkit-tap-highlight-color:transparent}
-.rht{font-size:11px;font-weight:700;flex-shrink:0}
-.rhs{font-size:10px;color:var(--tx2);flex:1;min-width:0}
-.rbody{padding:7px 9px}
-.rhint{font-size:10px;color:var(--tx2);background:var(--bg);border:1px solid var(--bdr);border-radius:4px;padding:3px 7px;display:inline-block;margin-bottom:5px}
-.hold-hint{display:none;font-size:10px;color:var(--tx2);background:var(--bg);border:1px solid var(--bdr);border-radius:4px;padding:3px 9px;margin-bottom:5px;text-align:center}
-@media(hover:none){.hold-hint{display:block}}
-.pw{margin-top:4px;display:none}
-.pt{font-size:10px;color:var(--tx2);margin-bottom:2px}
-.pb{height:4px;background:var(--c3);border-radius:2px;overflow:hidden}
-.pf{height:100%;background:var(--c2);width:0;transition:width .08s}
-@media(max-width:620px){.sgrid{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:430px){.sgrid{grid-template-columns:repeat(2,1fr)}.srow{gap:5px}.btn{padding:5px 9px;font-size:11px}.fl input,.fl select{width:84px}.ltab{padding:0 8px;font-size:11px}.tb{padding:6px 8px;gap:4px}.tb-title{font-size:11px}}
-@media(max-width:340px){.fl input,.fl select{width:72px}.spf input{width:78px}}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-
 <div class="tt" id="tt"></div>
 
 <div class="tb">
@@ -161,6 +41,8 @@ body{font-family:"Segoe UI",system-ui,sans-serif;color:var(--tx);font-size:14px;
 </div>
 
 <div class="wrap">
+
+<!-- ── SP CALCULATOR ── -->
 <div class="card">
   <div class="sh" onclick="toggleSec('sp')">
     <span class="st" data-i18n="spCardTitle">Specialty Priority Calculator</span>
@@ -182,45 +64,40 @@ body{font-family:"Segoe UI",system-ui,sans-serif;color:var(--tx);font-size:14px;
   </div>
 </div>
 
+<!-- ── CHARACTER LOCK RNG PRESETS ── -->
 <div class="card">
-  <div class="sh" onclick="toggleSec('s1')">
-    <span class="st" data-i18n="s1Title">Solo Rainbow Test</span>
-    <span class="sa" id="s1-arr">- Hide</span>
+  <div class="sh" onclick="toggleSec('pr')">
+    <span class="st" data-i18n="presetTitle">Character Lock RNG Presets</span>
+    <span class="sa" id="pr-arr">- Hide</span>
   </div>
-  <div id="s1-body">
-    <div class="srow" style="margin-bottom:7px">
-      <div class="fl"><label data-i18n="s1Pct">Rainbow Training Chance (%)</label><input type="number" id="s1pct" value="18.18" step="0.01" min="0" max="100" onchange="savePrefs()"></div>
-      <div class="fl"><label data-i18n="lblCells">Active Cells</label><input type="text" id="s1cells" readonly></div>
-      <div class="fl"><label data-i18n="lblRuns">Test Runs</label>
-        <select id="s1runs"><option value="1">1</option><option value="10">10</option><option value="100">100</option></select></div>
-      <button class="btn" onclick="runSolo()" data-i18n="btnRoll">Roll</button>
-      <button class="btn grey" onclick="resetSolo()" data-i18n="btnReset">Reset</button>
-    </div>
-    <div class="hold-hint" data-i18n="holdHint">Hold a cell to see details</div>
-    <div class="pw" id="s1pw"><div class="pt" id="s1pt"></div><div class="pb"><div class="pf" id="s1pf"></div></div></div>
-    <div id="s1out"></div>
-    <div id="s1sum" style="display:none;margin-top:6px">
-      <div class="mini-ttl" style="margin-bottom:4px" data-i18n="sumTitle">Summary</div>
-      <div class="smrow">
-        <div class="smbox"><div class="smval" id="s1rb">0</div><div class="smlbl" data-i18n="lbRb">Rainbow Training</div></div>
-        <div class="smbox"><div class="smval" id="s1ot">0</div><div class="smlbl" data-i18n="lbOt">Other Training</div></div>
-        <div class="smbox"><div class="smval" id="s1no">0</div><div class="smlbl" data-i18n="lbNo">Not in Any Training</div></div>
-        <div class="smbox"><div class="smval" id="s1tot">0</div><div class="smlbl" data-i18n="lbTot">Total Rolled</div></div>
+  <div id="pr-body">
+    <input class="srch" id="csrch" type="text" placeholder="Search…" oninput="filterC(this.value)">
+    <div class="cgrid" id="cgrid"></div>
+    <div id="pdet" class="pdet hidden">
+      <!-- BANNER — bg div first (z-index:0), then img (z-index:1), then overlay+text -->
+      <div class="pbnr" id="pbnr">
+        <div class="pbnr-bg" id="pbnr-bg"></div>
+        <img id="pbnr-img" src="" alt="">
+        <div class="pbnr-overlay"></div>
+        <div class="pbnr-text">
+          <span class="pbnr-kn" id="pbnr-kn"></span>
+          <span class="pbnr-en" id="pbnr-en"></span>
+        </div>
       </div>
-    </div>
-    <div id="s1sim" style="display:none;margin-top:6px">
-      <div class="sh" onclick="toggleSec('s1s')">
-        <span class="st" data-i18n="simTitle">10,000-Run Simulation</span>
-        <span class="sa" id="s1s-arr">+ Show</span>
+      <div class="pleg">
+        <div class="pleg-i"><div class="pleg-d" style="background:#f59e0b"></div><span data-i18n="grJ">Jr</span></div>
+        <div class="pleg-i"><div class="pleg-d" style="background:#10b981"></div><span data-i18n="grC">Cl</span></div>
+        <div class="pleg-i"><div class="pleg-d" style="background:#6b63e6"></div><span data-i18n="grS">Sr</span></div>
       </div>
-      <div id="s1s-body" class="hidden">
-        <table class="sim-tbl"><thead><tr><th data-i18n="lbRb">Rainbow</th><th data-i18n="thCount">Count</th><th>%</th><th data-i18n="thBar">Bar</th></tr></thead>
-        <tbody id="s1simtbody"></tbody></table>
-      </div>
+      <div class="pdet-name" id="pd-n"></div>
+      <div class="pdet-kana" id="pd-k"></div>
+      <div class="glist" id="pd-g"></div>
+      <button class="papp" id="pd-app" onclick="applyPreset()" data-i18n="presetApply">Apply → Lock Goals</button>
     </div>
   </div>
 </div>
 
+<!-- ── COMBINED TEST — always visible ── -->
 <div class="card">
   <div class="sh" onclick="toggleSec('s2')">
     <span class="st" data-i18n="s2Title">Combined Test (5 Slots)</span>
@@ -262,303 +139,8 @@ body{font-family:"Segoe UI",system-ui,sans-serif;color:var(--tx);font-size:14px;
     </div>
   </div>
 </div>
-</div>
 
-<script>
-const D={
-  EN:{appTitle:"Uma Musume - Specialty Priority Tester",warnTitle:"Notice",warnBody:"The RNG simulation in this tool may not be 100% accurate. The in-game RNG system may be more complex than what can be replicated in a browser. While I have personally tested it against real in-game results and confirmed it can be used as a reference, please apply your own judgment. Thank you.",spCardTitle:"Specialty Priority Calculator",spFormula:"Formula: (100+SP)×UniqueEffect×100 ÷ [(100×4+50)+(100+SP×UniqueEffect)]",spLblSP:"Specialty Priority (SP)",spLblUE:"Unique Effect Bonus (%)",spLblRes:"Result",s1Title:"Solo Rainbow Test",s1Pct:"Rainbow Training Chance (%)",lblCells:"Active Cells",lblRuns:"Test Runs",btnRoll:"Roll",btnReset:"Reset",btnRollC:"Roll Combined",sumTitle:"Total Summary",lbRb:"Rainbow Training",lbOt:"Other Training",lbNo:"Not in Any Training",lbTot:"Total Rolled",s2Title:"Combined Test (5 Slots)",slotSettings:"Slot Settings",slotSumTitle:"Per-Slot Summary",grandTotal:"Grand Total",eyeLbl:"Filter by Slot Color:",simTitle:"10,000-Run Simulation",thCount:"Count",thBar:"Bar",resultHint:"Tap to lock/unlock",holdHint:"Hold a cell to see details",slotActive:"Active",slotRb:"Rainbow Chance (%)",slotCells:"Active Cells",slotColor:"Color",pRolling:"Rolling",pSim:"Running 10,000 sim…",pDone:"Done!",ttLocked:"(Locked)",ttRb:"Rainbow training",ttOt:"Other training",ttNo:"Not in any training",grJ:"Junior",grC:"Classic",grS:"Senior + URA",M:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],hE:"Early",hL:"Late",ura:["URA Early","URA Late","FINAL"]},
-  TH:{appTitle:"Uma Musume - Specialty Priority Tester",warnTitle:"คำเตือน",warnBody:"การสุ่ม RNG ในเว็บนี้ไม่ได้มีความถูกต้องแบบ 100% เพราะภายในเกมระบบ RNG \"อาจจะ\" ซับซ้อนมากกว่าในระบบเว็บไซต์ จึงมีโอกาสที่จะผิดพลาดได้ ถึงแม้ตัวผมจะทำการทดสอบจากในเกมโดยตรงมาแล้วว่าสามารถใช้เพื่ออ้างอิงได้ แต่ได้โปรดใช้วิจารณญาณในการใช้งาน ขอบคุณครับ",spCardTitle:"คำนวณ Specialty Priority",spFormula:"สูตร: (100+SP)×UniqueEffect×100 ÷ [(100×4+50)+(100+SP×UniqueEffect)]",spLblSP:"Specialty Priority (SP)",spLblUE:"Unique Effect โบนัส (%)",spLblRes:"ผลลัพธ์",s1Title:"ทดสอบการฝึกรุ้งแบบเดี่ยว",s1Pct:"เปอร์เซนต์ตกการฝึกรุ้ง (%)",lblCells:"จำนวนช่องที่สุ่ม",lblRuns:"จำนวนรอบ",btnRoll:"เริ่มสุ่ม",btnReset:"รีเซต",btnRollC:"เริ่มสุ่มรวม",sumTitle:"สรุปรวม",lbRb:"การฝึกรุ้ง",lbOt:"การฝึกอื่น",lbNo:"ไม่ตกช่องฝึกไหนเลย",lbTot:"สุ่มทั้งหมด",s2Title:"ทดสอบแบบรวม (5 ส่วน)",slotSettings:"ตั้งค่า 5 ส่วน",slotSumTitle:"สรุปแต่ละส่วน",grandTotal:"รวมทั้งหมด",eyeLbl:"กรองตามสีส่วน:",simTitle:"จำลอง 10,000 รอบ",thCount:"ครั้ง",thBar:"กราฟ",resultHint:"คลิ๊กที่กรอบสีเหลี่ยมเพื่อปิดการสุ่ม/ปลดล็อค",holdHint:"กดค้างที่ช่องเพื่อดูรายละเอียดการตกเเละกดเพื่อปิดการสุ่มช่องนั้น",slotActive:"ใช้งาน",slotRb:"เปอร์เซนต์รุ้ง (%)",slotCells:"ช่องที่สุ่ม",slotColor:"สี",pRolling:"กำลังสุ่ม",pSim:"กำลังจำลอง 10,000 รอบ…",pDone:"เสร็จแล้ว!",ttLocked:"(ล็อก)",ttRb:"ตกการฝึกรุ้ง",ttOt:"ตกการฝึกอื่น",ttNo:"ไม่ตกการฝึกใดเลย",grJ:"จูเนียร์",grC:"คลาสสิก",grS:"ซีเนียร์ + URA",M:["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."],hE:"ต้น",hL:"ปลาย",ura:["URA ต้น","URA ปลาย","FINAL"]},
-  JP:{appTitle:"Uma Musume - 得意率アップ計算機",warnTitle:"ご注意",warnBody:"このツールのRNGシミュレーションは100%正確ではない場合があります。ゲーム内のRNGシステムはブラウザ上で再現できるものより複雑な可能性があります。実際のゲームで検証した結果、参考として使用できることは確認済みですが、ご自身の判断でご利用ください。ありがとうございます。",spCardTitle:"得意率アップ計算機",spFormula:"計算式: (100+得意率)×固有効果×100 ÷ [(100×4+50)+(100+得意率×固有効果)]",spLblSP:"得意率アップ (SP)",spLblUE:"固有効果 得意率アップ (%)",spLblRes:"結果",s1Title:"虹枠単独テスト",s1Pct:"得意練習（虹枠）確率 (%)",lblCells:"有効マス数",lblRuns:"テスト回数",btnRoll:"抽選",btnReset:"リセット",btnRollC:"複合抽選",sumTitle:"合計サマリー",lbRb:"得意練習（虹枠）",lbOt:"その他の練習",lbNo:"どこにも現れず",lbTot:"総抽選数",s2Title:"複合テスト (5スロット)",slotSettings:"スロット設定",slotSumTitle:"スロット別サマリー",grandTotal:"総合計",eyeLbl:"スロット色でフィルター:",simTitle:"1万回シミュレーション",thCount:"回数",thBar:"グラフ",resultHint:"マスをクリックしてロック/解除",holdHint:"セルを長押しして詳細表示",slotActive:"有効",slotRb:"得意練習確率 (%)",slotCells:"有効マス数",slotColor:"カラー",pRolling:"抽選中",pSim:"1万回シミュレーション実行中…",pDone:"完了!",ttLocked:"(ロック)",ttRb:"得意練習（虹枠）",ttOt:"その他の練習",ttNo:"どこにも現れず",grJ:"ジュニア",grC:"クラシック",grS:"シニア + URA",M:["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],hE:"前半",hL:"後半",ura:["URA前半","URA後半","FINAL"]},
-};
-let L="EN";
-function t(k){return D[L][k]??D.EN[k]??k;}
-
-/* ── LOCALSTORAGE ── */
-const LS="uma_prefs_v1";
-function savePrefs(){
-  try{
-    localStorage.setItem(LS,JSON.stringify({
-      lang:L,theme:window._theme||"blue",
-      customHex:document.getElementById("ccolor")?.value||"#1a6eb5",
-      noticeDismissed:document.getElementById("notice")?.style.display==="none",
-      spv:document.getElementById("spv")?.value||"80",
-      uev:document.getElementById("uev")?.value||"20",
-      s1pct:document.getElementById("s1pct")?.value||"18.18",
-      slots:slotData.map(s=>({n:s.n,c:s.c,pct:s.pct,en:s.en})),
-      locks:SL.reduce((a,v,i)=>{if(v)a.push(i);return a;},[]),
-    }));
-  }catch(e){}
-}
-function loadPrefs(){
-  try{
-    const raw=localStorage.getItem(LS);if(!raw)return;
-    const p=JSON.parse(raw);
-    if(p.lang&&D[p.lang])L=p.lang;
-    if(p.noticeDismissed){const n=document.getElementById("notice");if(n)n.style.display="none";}
-    if(p.spv){const el=document.getElementById("spv");if(el)el.value=p.spv;}
-    if(p.uev){const el=document.getElementById("uev");if(el)el.value=p.uev;}
-    if(p.s1pct){const el=document.getElementById("s1pct");if(el)el.value=p.s1pct;}
-    if(p.slots&&Array.isArray(p.slots)){p.slots.forEach((s,i)=>{if(slotData[i]){slotData[i].n=s.n;slotData[i].c=s.c;slotData[i].pct=s.pct;slotData[i].en=s.en;}});}
-    if(p.locks&&Array.isArray(p.locks)){p.locks.forEach(gi=>{if(gi>=0&&gi<TC)SL[gi]=true;});}
-    if(p.theme==="custom"&&p.customHex){const cc=document.getElementById("ccolor");if(cc)cc.value=p.customHex;applyCustomSilent(p.customHex);}
-    else if(p.theme){applyThemeSilent(p.theme);}
-    document.querySelectorAll(".ltab").forEach(el=>el.classList.toggle("on",el.textContent.trim()===L));
-  }catch(e){}
-}
-function closeNotice(){const n=document.getElementById("notice");if(n)n.style.display="none";savePrefs();}
-
-/* ── LANG ── */
-function setLang(l){L=l;document.querySelectorAll(".ltab").forEach(el=>el.classList.toggle("on",el.textContent.trim()===l));renderAll();savePrefs();}
-function renderAll(){
-  document.querySelectorAll("[data-i18n]").forEach(el=>el.textContent=t(el.dataset.i18n));
-  calcSP();buildSlotCfg();buildSGrid("sg1");buildSGrid("sg2");
-  document.querySelectorAll("[data-cgi]").forEach(el=>el.textContent=shortLbl(+el.dataset.cgi));
-  document.querySelectorAll("[data-rg]").forEach(el=>el.textContent=t(el.dataset.rg==="j"?"grJ":el.dataset.rg==="c"?"grC":"grS"));
-  document.querySelectorAll(".rhint").forEach(el=>el.textContent=t("resultHint"));
-  document.querySelectorAll("[data-rs]").forEach(el=>{const d=JSON.parse(el.dataset.rs);el.innerHTML=`${t("lbRb")}: <b>${d.rb}</b> | ${t("lbOt")}: <b>${d.ot}</b> | ${t("lbNo")}: <b>${d.no}</b>`;});
-  document.querySelectorAll("[data-sk]").forEach(el=>el.textContent=t(el.dataset.sk));
-  buildEye();updateCnt();
-}
-
-/* ── THEMES ── */
-const TH2={blue:{c2:"#1a6eb5",c4:"#0d4f8a",c3:"#d0e8f7",bg:"#f0f6fc",sur:"#fff",bdr:"#b8d4ed",tx:"#0d2137",tx2:"#4a6080"},pink:{c2:"#c03070",c4:"#8a1a50",c3:"#f7d0e5",bg:"#fcf0f6",sur:"#fff",bdr:"#edadd0",tx:"#370d22",tx2:"#803a60"},green:{c2:"#1a7a3c",c4:"#0d5a28",c3:"#d0f7e0",bg:"#f0fcf4",sur:"#fff",bdr:"#b8edd0",tx:"#0d2118",tx2:"#3a6050"},purple:{c2:"#6a2eb5",c4:"#4a1a8a",c3:"#e4d0f7",bg:"#f6f0fc",sur:"#fff",bdr:"#d4b8ed",tx:"#1a0d37",tx2:"#603a80"},orange:{c2:"#b85c1a",c4:"#8a3e0d",c3:"#f7e2d0",bg:"#fcf4f0",sur:"#fff",bdr:"#edc8b8",tx:"#371a0d",tx2:"#805a3a"},dark:{c2:"#4a90d9",c4:"#2a70b9",c3:"#1e2e42",bg:"#111827",sur:"#1a2535",bdr:"#2a3a50",tx:"#e0eaf5",tx2:"#7a9abf"}};
-function applyThemeSilent(n){const th=TH2[n];if(!th)return;window._theme=n;Object.entries(th).forEach(([k,v])=>document.documentElement.style.setProperty("--"+k,v));}
-function applyTheme(n){applyThemeSilent(n);savePrefs();}
-function applyCustomSilent(hex){window._theme="custom";const r=parseInt(hex.slice(1,3),16),g=parseInt(hex.slice(3,5),16),b=parseInt(hex.slice(5,7),16);document.documentElement.style.setProperty("--c2",hex);document.documentElement.style.setProperty("--c4",`rgb(${Math.max(0,r-40)},${Math.max(0,g-40)},${Math.max(0,b-40)})`);document.documentElement.style.setProperty("--c3",`rgba(${r},${g},${b},0.2)`);}
-function applyCustom(hex){applyCustomSilent(hex);savePrefs();}
-function toggleTP(){document.getElementById("tp").classList.toggle("open");}
-function toggleSec(id){const b=document.getElementById(id+"-body"),a=document.getElementById(id+"-arr");if(!b)return;const h=b.classList.toggle("hidden");if(a)a.textContent=h?"+ Show":"- Hide";}
-
-/* ── SP ── */
-function calcSP(){
-  const sp=parseFloat(document.getElementById("spv").value)||0,ue=parseFloat(document.getElementById("uev").value)||0;
-  const eff=1+ue/100,num=(100+sp)*eff*100,den=(100*4+50)+(100+sp*eff),res=num/den;
-  document.getElementById("sp-res").innerHTML=`eff = <b style="color:#1a6eb5">${eff.toFixed(2)}</b> | <span class="sp-pct">${res.toFixed(2)}%</span>`;
-  document.getElementById("sp-steps").textContent=`= (100+${sp})×${eff.toFixed(2)}×100 ÷ [(450)+(100+${sp}×${eff.toFixed(2)})]\n= ${num.toFixed(1)} ÷ ${den.toFixed(2)} ≈ ${res.toFixed(4)}%`;
-}
-
-/* ── GRID DEFS ── */
-function jrCells(){return[{t:"m",m:3,h:0},{t:"m",m:3,h:0},{t:"m",m:3,h:1},{t:"m",m:3,h:1},{t:"m",m:4,h:0},{t:"m",m:4,h:0},{t:"m",m:4,h:1},{t:"m",m:4,h:1},{t:"m",m:5,h:0},{t:"m",m:5,h:0},{t:"m",m:5,h:1},{t:"m",m:5,h:1},{t:"m",m:6,h:0},{t:"m",m:6,h:1},{t:"m",m:7,h:0},{t:"m",m:7,h:1},{t:"m",m:8,h:0},{t:"m",m:8,h:1},{t:"m",m:9,h:0},{t:"m",m:9,h:1},{t:"m",m:10,h:0},{t:"m",m:10,h:1},{t:"m",m:11,h:0},{t:"m",m:11,h:1}];}
-function mCells(s,n){const c=[];for(let i=0;i<n;i++)c.push({t:"m",m:(s+Math.floor(i/2))%12,h:i%2});return c;}
-const GD=[{k:"j",cells:jrCells(),cols:4,tg:"j"},{k:"c",cells:mCells(0,24),cols:4,tg:"c"},{k:"s",cells:mCells(0,24),cols:4,tg:"s"},{k:"u",cells:[{t:"u",i:0},{t:"u",i:1},{t:"u",i:2}],cols:3,tg:"s"}];
-const GS={};let _ci=0;GD.forEach(g=>{GS[g.k]=_ci;_ci+=g.cells.length;});const TC=_ci;
-function shortLbl(gi){for(const g of GD){const s=GS[g.k];if(gi>=s&&gi<s+g.cells.length){const c=g.cells[gi-s];if(c.t==="u")return t("ura")[c.i];return t("M")[c.m]+(c.h===0?t("hE"):t("hL"));}}return "";}
-function fullLbl(gi){for(const g of GD){const s=GS[g.k];if(gi>=s&&gi<s+g.cells.length){const c=g.cells[gi-s];if(c.t==="u")return t("ura")[c.i];return t("M")[c.m]+" "+(c.h===0?t("hE"):t("hL"));}}return "";}
-
-/* ── LOCKS ── */
-const SL=new Array(TC).fill(false),RL=new Set();
-function getAct(){return SL.reduce((n,v,i)=>(!v&&!RL.has(i))?n+1:n,0);}
-function updateCnt(){const a=getAct();const el=document.getElementById("s1cells");if(el)el.value=a;slotData.forEach((_,i)=>{const e=document.getElementById("sc-"+i);if(e)e.value=a;});}
-function toggleSL(gi){SL[gi]=!SL[gi];document.querySelectorAll(`[data-lgi="${gi}"]`).forEach(el=>{el.classList.toggle("locked",SL[gi]);const x=el.querySelector(".cx");if(x)x.remove();if(SL[gi])el.insertAdjacentHTML("afterbegin","<div class=\"cx\">X</div>");});updateCnt();savePrefs();}
-function toggleRL(gi,el){if(RL.has(gi)){RL.delete(gi);el.classList.remove("rl");}else{RL.add(gi);el.classList.add("rl");}updateCnt();}
-
-/* ── TOOLTIP — reads data-tt from each element directly (bug fix) ── */
-const ttEl=document.getElementById("tt");
-let ttVis=false,holdTm=null;
-function buildTTC(gi,cellEl){
-  const lk=SL[gi]||RL.has(gi),fl=fullLbl(gi);
-  let data={d:[],o:[],n:[]};
-  if(cellEl?.dataset.tt){try{data=JSON.parse(cellEl.dataset.tt);}catch(e){}}
-  let h=`<div class="tt-m">${fl}${lk?" "+t("ttLocked"):""}</div>`;
-  if(data.d?.length)data.d.forEach(x=>{h+=`<div class="tt-r"><div class="tt-d" style="background:${x.c}"></div><span>${x.n}: ${t("ttRb")}</span></div>`;});
-  if(data.o?.length)data.o.forEach(x=>{h+=`<div class="tt-r"><div class="tt-d" style="background:${x.c};opacity:.5"></div><span>${x.n}: ${t("ttOt")}</span></div>`;});
-  if(data.n?.length)data.n.forEach(x=>{h+=`<div class="tt-r"><div class="tt-d" style="background:${x.c};opacity:.25"></div><span>${x.n}: ${t("ttNo")}</span></div>`;});
-  if(!data.d?.length&&!data.o?.length&&!data.n?.length)h+=`<div class="tt-n">—</div>`;
-  return h;
-}
-function posTT(cx,cy){
-  ttEl.style.visibility="hidden";ttEl.classList.add("on");
-  const w=ttEl.offsetWidth,hh=ttEl.offsetHeight,vw=window.innerWidth,vh=window.innerHeight;
-  ttEl.style.visibility="";
-  let l=cx+14,tp=cy-8;
-  if(l+w>vw-8)l=Math.max(8,cx-w-14);
-  if(tp+hh>vh-8)tp=Math.max(8,vh-hh-8);
-  ttEl.style.left=l+"px";ttEl.style.top=tp+"px";
-}
-function showTT(cx,cy,gi,el){ttEl.innerHTML=buildTTC(gi,el);posTT(cx,cy);ttEl.classList.add("on");ttVis=true;}
-function hidTT(){ttEl.classList.remove("on");ttVis=false;}
-function attachTT(el,gi){
-  el.addEventListener("mouseenter",e=>showTT(e.clientX,e.clientY,gi,el));
-  el.addEventListener("mousemove",e=>{if(ttVis)posTT(e.clientX,e.clientY);});
-  el.addEventListener("mouseleave",()=>hidTT());
-  el.addEventListener("touchstart",e=>{holdTm=setTimeout(()=>{e.preventDefault();const tc=e.touches[0];showTT(tc.clientX,tc.clientY,gi,el);},500);},{passive:true});
-  el.addEventListener("touchend",()=>{clearTimeout(holdTm);holdTm=null;if(ttVis)setTimeout(()=>hidTT(),1500);});
-  el.addEventListener("touchmove",()=>{clearTimeout(holdTm);holdTm=null;});
-}
-
-/* ── SETUP GRID ── */
-function buildSGrid(cid){
-  const el=document.getElementById(cid);if(!el)return;
-  const tabs=["j","c","s"],uid=cid;
-  let h=`<div class="gtabs">`;
-  tabs.forEach((g,i)=>h+=`<div class="gtab ${i===0?"on":""}" data-gt="${uid}-${g}" onclick="swTab('${uid}','${g}')">${t(g==="j"?"grJ":g==="c"?"grC":"grS")}</div>`);
-  h+="</div>";
-  tabs.forEach((tk,ti)=>{
-    h+=`<div class="gpanel ${ti===0?"on":""}" id="${uid}-p-${tk}">`;
-    GD.filter(g=>g.tg===tk).forEach(g=>{
-      const st=GS[g.k],tot=g.cells.length;
-      h+=`<div class="rgrid" style="grid-template-columns:repeat(${g.cols},1fr);margin-bottom:4px">`;
-      for(let i=0;i<tot;i++){const gi=st+i,lk=SL[gi],lb=shortLbl(gi);h+=`<div class="cell sm${lk?" locked":""}" data-lgi="${gi}" data-gi="${gi}">${lk?"<div class=\"cx\">X</div>":""}<div class="drow"></div><div class="clbl" data-cgi="${gi}">${lb}</div></div>`;}
-      h+="</div>";
-    });
-    h+="</div>";
-  });
-  el.innerHTML=h;
-  el.querySelectorAll(".cell.sm").forEach(cell=>{const gi=+cell.dataset.gi;cell.addEventListener("click",()=>toggleSL(gi));attachTT(cell,gi);});
-}
-function swTab(uid,key){
-  document.querySelectorAll(`[data-gt^="${uid}-"]`).forEach(el=>el.classList.toggle("on",el.dataset.gt===`${uid}-${key}`));
-  ["j","c","s"].forEach(g=>{const p=document.getElementById(`${uid}-p-${g}`);if(p)p.classList.toggle("on",g===key);});
-}
-
-/* ── RNG ── */
-function roll(pct){const r=Math.floor(Math.random()*10000)/100,rem=100-pct,oth=rem*(72.8/81.8);if(r<pct)return"rb";if(r<pct+oth)return"ot";return"no";}
-
-/* ── EYE FILTER ── */
-let eye=null;
-function buildEye(){
-  const wrap=document.getElementById("ewrap"),er=document.getElementById("erow");
-  const en=slotData.filter(s=>s.en);
-  if(!en.length){wrap.style.display="none";return;}
-  wrap.style.display="block";
-  let h=`<div class="ebtn${eye===null?" on":""}" style="${eye===null?"background:var(--c2);border-color:var(--c2)":""}" onclick="setEye(null)">All</div>`;
-  en.forEach(s=>{const a=eye===s.c;h+=`<div class="ebtn${a?" on":""}" style="${a?`background:${s.c};border-color:${s.c}`:""}" onclick="setEye('${s.c}')"><div class="edot" style="background:${s.c}"></div>${s.n}</div>`;});
-  er.innerHTML=h;
-}
-function setEye(color){
-  eye=color;buildEye();
-  const s2o=document.getElementById("s2out");if(!s2o)return;
-  s2o.querySelectorAll(".cell").forEach(cell=>{
-    const dots=cell.querySelectorAll(".dot");
-    if(color===null){cell.style.opacity="";dots.forEach(d=>{d.style.filter="";d.style.opacity="";});}
-    else{const has=[...dots].some(d=>d.dataset.c===color);cell.style.opacity=has?"":"0.4";dots.forEach(d=>{if(d.dataset.c===color){d.style.filter="";d.style.opacity="1";}else{d.style.filter="grayscale(1)";d.style.opacity="0.15";}});}
-  });
-}
-
-/* ── RESULT GRID — data-tt stored per element ── */
-function buildResGrid(pfx,ri,cr){
-  const tabs=["j","c","s"],uid=`r${pfx}${ri}`;
-  let h=`<div class="gtabs">`;
-  tabs.forEach((g,i)=>h+=`<div class="gtab ${i===0?"on":""}" data-gt="${uid}-${g}" data-rg="${g}" onclick="swTab('${uid}','${g}')">${t(g==="j"?"grJ":g==="c"?"grC":"grS")}</div>`);
-  h+="</div>";
-  tabs.forEach((tk,ti)=>{
-    h+=`<div class="gpanel ${ti===0?"on":""}" id="${uid}-p-${tk}">`;
-    GD.filter(g=>g.tg===tk).forEach(g=>{
-      const st=GS[g.k],tot=g.cells.length;
-      h+=`<div class="rgrid" style="grid-template-columns:repeat(${g.cols},1fr);margin-bottom:4px">`;
-      for(let i=0;i<tot;i++){
-        const gi=st+i,dots=cr[gi]||[],lk=SL[gi],rl=RL.has(gi),lb=shortLbl(gi);
-        const mc=dots.length>3?" many":"";
-        const dh=dots.map(d=>`<div class="dot" data-c="${d.c}" style="background:${d.c}"></div>`).join("");
-        // KEY FIX: each cell gets its own tooltip data as data-tt
-        const ttData=cr["_tt_"+gi]||{d:[],o:[],n:[]};
-        const ttJSON=JSON.stringify(ttData).replace(/'/g,"&#39;").replace(/"/g,"&quot;");
-        h+=`<div class="cell rm${lk?" locked":""}${rl?" rl":""}" data-gi="${gi}" data-tt="${ttJSON}"><div class="cx">X</div><div class="drow${mc}">${dh}</div><div class="clbl" data-cgi="${gi}">${lb}</div></div>`;
-      }
-      h+="</div>";
-    });
-    h+="</div>";
-  });
-  return h;
-}
-function mkRun(pfx,ri,cr,rb,ot,no){
-  const block=document.createElement("div");
-  block.className="rb";
-  block.innerHTML=`<div class="rh" onclick="togRun(this)"><span class="rht">Run ${ri+1}</span><span class="rhs" data-rs='${JSON.stringify({rb,ot,no})}'>${t("lbRb")}: <b>${rb}</b> | ${t("lbOt")}: <b>${ot}</b> | ${t("lbNo")}: <b>${no}</b></span><span class="sa">- Hide</span></div><div class="rbody"><span class="rhint">${t("resultHint")}</span>${buildResGrid(pfx,ri,cr)}</div>`;
-  block.querySelectorAll(".cell.rm").forEach(cell=>{const gi=+cell.dataset.gi;cell.addEventListener("click",()=>toggleRL(gi,cell));attachTT(cell,gi);});
-  return block;
-}
-function togRun(h){const b=h.nextElementSibling,a=h.querySelector(".sa");const hd=b.classList.toggle("hidden");a.textContent=hd?"+ Show":"- Hide";}
-
-/* ── SIM ── */
-function runSim(pct,act){const S=10000,f={};for(let s=0;s<S;s++){let c=0;for(let i=0;i<act;i++){if(roll(pct)==="rb")c++;}f[c]=(f[c]||0)+1;}return Object.entries(f).map(([k,v])=>({h:+k,c:v,p:v/S*100})).sort((a,b)=>b.c-a.c);}
-function rendSim(rows,tb){const mx=Math.max(...rows.map(r=>r.p));function clr(r){if(r>.6)return"#1a7a3c";if(r>.3)return"#4a9a5c";if(r>.15)return"#8ab83a";if(r>.08)return"#c8b800";if(r>.03)return"#e08800";if(r>.01)return"#c84400";return"#a81c1c";}tb.innerHTML=rows.map(r=>{const c=clr(r.p/mx),bw=Math.max(2,Math.round(r.p/mx*130));return`<tr><td style="font-weight:700">${r.h}</td><td>${r.c.toLocaleString()}</td><td style="color:${c};font-weight:700">${r.p.toFixed(2)}%</td><td><div class="bar" style="background:${c};width:${bw}px"></div></td></tr>`;}).join("");}
-
-/* ── SOLO ── */
-async function runSolo(){
-  const pct=parseFloat(document.getElementById("s1pct").value)||18.18,runs=+document.getElementById("s1runs").value||1,act=getAct();
-  document.getElementById("s1out").innerHTML="";document.getElementById("s1sum").style.display="none";document.getElementById("s1sim").style.display="none";document.getElementById("s1pw").style.display="block";
-  let gRb=0,gOt=0,gNo=0;
-  for(let ri=0;ri<runs;ri++){
-    document.getElementById("s1pt").textContent=`${t("pRolling")} ${ri+1}/${runs}`;
-    document.getElementById("s1pf").style.width=((ri/runs)*70)+"%";
-    await new Promise(r=>setTimeout(r,5));
-    let rb=0,ot=0,no=0;const cr={};
-    for(let gi=0;gi<TC;gi++){
-      if(SL[gi]||RL.has(gi)){cr[gi]=[];cr["_tt_"+gi]={d:[],o:[],n:[]};continue;}
-      const res=roll(pct);
-      if(res==="rb"){rb++;cr[gi]=[{c:"var(--c2)",n:"Solo"}];cr["_tt_"+gi]={d:[{c:"var(--c2)",n:"Solo"}],o:[],n:[]};}
-      else if(res==="ot"){cr[gi]=[];ot++;cr["_tt_"+gi]={d:[],o:[{c:"var(--c2)",n:"Solo"}],n:[]};}
-      else{cr[gi]=[];no++;cr["_tt_"+gi]={d:[],o:[],n:[{c:"var(--c2)",n:"Solo"}]};}
-    }
-    gRb+=rb;gOt+=ot;gNo+=no;document.getElementById("s1out").appendChild(mkRun("s1",ri,cr,rb,ot,no));
-  }
-  document.getElementById("s1rb").textContent=gRb;document.getElementById("s1ot").textContent=gOt;document.getElementById("s1no").textContent=gNo;document.getElementById("s1tot").textContent=act*runs;
-  document.getElementById("s1sum").style.display="block";
-  document.getElementById("s1pt").textContent=t("pSim");document.getElementById("s1pf").style.width="80%";
-  await new Promise(r=>setTimeout(r,10));
-  rendSim(runSim(pct,act),document.getElementById("s1simtbody"));
-  document.getElementById("s1sim").style.display="block";
-  document.getElementById("s1pf").style.width="100%";document.getElementById("s1pt").textContent=t("pDone");
-  setTimeout(()=>{document.getElementById("s1pw").style.display="none";},700);
-}
-function resetSolo(){document.getElementById("s1out").innerHTML="";document.getElementById("s1sum").style.display="none";document.getElementById("s1sim").style.display="none";document.getElementById("s1pw").style.display="none";document.getElementById("s1pf").style.width="0%";RL.clear();updateCnt();}
-
-/* ── SLOTS ── */
-const slotData=[{n:"Slot 1",c:"#22d3ee",pct:18.18,en:true},{n:"Slot 2",c:"#ef4444",pct:18.18,en:true},{n:"Slot 3",c:"#ca8a04",pct:18.18,en:true},{n:"Slot 4",c:"#22c55e",pct:18.18,en:true},{n:"Slot 5",c:"#6d28d9",pct:18.18,en:true}];
-function buildSlotCfg(){
-  const act=getAct();
-  document.getElementById("scfg").innerHTML=slotData.map((s,i)=>`<div class="sc"><div class="sch"><div class="snum" style="background:${s.c}">${i+1}</div><input value="${s.n}" style="border:none;background:none;font-size:10px;font-weight:700;color:var(--tx);outline:none;flex:1;min-width:0;width:0" onchange="slotData[${i}].n=this.value;buildEye();savePrefs()"></div><div class="sf"><label>${t("slotRb")}</label><input type="number" value="${s.pct}" step="0.01" min="0" max="100" onchange="slotData[${i}].pct=parseFloat(this.value)||18.18;savePrefs()"></div><div class="sf"><label>${t("slotCells")}</label><input type="text" id="sc-${i}" value="${act}" readonly></div><div style="display:flex;align-items:center;gap:2px;margin-top:2px"><label style="font-size:9px;color:var(--tx2);flex:1">${t("slotColor")}</label><input type="color" class="cpick" value="${s.c}" oninput="slotData[${i}].c=this.value;buildSlotCfg();savePrefs()"></div><div class="trow"><div class="tog ${s.en?"on":""}" id="tog-${i}" onclick="togSlot(${i})"></div><label>${t("slotActive")}</label></div></div>`).join("");
-}
-function togSlot(i){slotData[i].en=!slotData[i].en;document.getElementById("tog-"+i).classList.toggle("on",slotData[i].en);buildEye();savePrefs();}
-
-/* ── COMBINED ── */
-let s2SimD=[];
-async function runCombined(){
-  buildSlotCfg();
-  const runs=+document.getElementById("s2runs").value||1,en=slotData.map((s,i)=>({...s,idx:i})).filter(s=>s.en);
-  if(!en.length){alert("Enable at least one slot.");return;}
-  const act=getAct();
-  document.getElementById("s2out").innerHTML="";document.getElementById("s2sum").style.display="none";document.getElementById("s2sim").style.display="none";document.getElementById("s2pw").style.display="block";
-  eye=null;const bySlot=slotData.map(()=>({rb:0,ot:0,no:0,tot:0}));let gRb=0,gOt=0,gNo=0,gTot=0;
-  for(let ri=0;ri<runs;ri++){
-    document.getElementById("s2pt").textContent=`${t("pRolling")} ${ri+1}/${runs}`;
-    document.getElementById("s2pf").style.width=((ri/runs)*70)+"%";
-    await new Promise(r=>setTimeout(r,5));
-    const cr={};for(let gi=0;gi<TC;gi++){cr[gi]=[];cr["_tt_"+gi]={d:[],o:[],n:[]};}
-    let runRb=0,runOt=0,runNo=0;
-    en.forEach(s=>{
-      let sb=0,so=0,sn=0;
-      for(let gi=0;gi<TC;gi++){
-        if(SL[gi]||RL.has(gi))continue;
-        const res=roll(s.pct);
-        if(res==="rb"){sb++;cr[gi].push({c:s.c,n:s.n});cr["_tt_"+gi].d.push({c:s.c,n:s.n});}
-        else if(res==="ot"){so++;cr["_tt_"+gi].o.push({c:s.c,n:s.n});}
-        else{sn++;cr["_tt_"+gi].n.push({c:s.c,n:s.n});}
-      }
-      bySlot[s.idx].rb+=sb;bySlot[s.idx].ot+=so;bySlot[s.idx].no+=sn;bySlot[s.idx].tot+=act;
-      runRb+=sb;runOt+=so;runNo+=sn;
-    });
-    gRb+=runRb;gOt+=runOt;gNo+=runNo;gTot+=act*en.length;
-    document.getElementById("s2out").appendChild(mkRun("s2",ri,cr,runRb,runOt,runNo));
-  }
-  document.getElementById("s2stbody").innerHTML=en.map(s=>{const d=bySlot[s.idx];return`<tr><td style="text-align:left"><span class="sdot" style="background:${s.c}"></span>${s.n}</td><td style="font-weight:700;color:${s.c}">${d.rb}</td><td>${d.ot}</td><td>${d.no}</td><td style="color:var(--tx2)">${d.tot}</td></tr>`;}).join("");
-  document.getElementById("s2sum").style.display="block";
-  document.getElementById("s2grand").innerHTML=`<div class="smbox"><div class="smval">${gRb}</div><div class="smlbl" data-sk="lbRb">${t("lbRb")}</div></div><div class="smbox"><div class="smval">${gOt}</div><div class="smlbl" data-sk="lbOt">${t("lbOt")}</div></div><div class="smbox"><div class="smval">${gNo}</div><div class="smlbl" data-sk="lbNo">${t("lbNo")}</div></div><div class="smbox"><div class="smval">${gTot}</div><div class="smlbl" data-sk="lbTot">${t("lbTot")}</div></div>`;
-  s2SimD=en.map(s=>({pct:s.pct,act,c:s.c,n:s.n}));
-  document.getElementById("s2stabs").innerHTML=s2SimD.map((sd,i)=>`<div class="stab${i===0?" on":""}" id="s2t-${i}" onclick="selS2(${i})" style="${i===0?`background:${sd.c};border-color:${sd.c};color:#fff`:""}"><div class="td" style="background:${sd.c}"></div>${sd.n}</div>`).join("");
-  document.getElementById("s2sim").style.display="block";
-  await new Promise(r=>setTimeout(r,5));selS2(0);
-  document.getElementById("s2pf").style.width="100%";document.getElementById("s2pt").textContent=t("pDone");
-  setTimeout(()=>{document.getElementById("s2pw").style.display="none";},700);buildEye();
-}
-function selS2(idx){s2SimD.forEach((_,i)=>{const tab=document.getElementById("s2t-"+i);if(!tab)return;if(i===idx){tab.classList.add("on");tab.style.cssText=`background:${s2SimD[i].c};border-color:${s2SimD[i].c};color:#fff`;}else{tab.classList.remove("on");tab.style.cssText="";}});const sd=s2SimD[idx];if(!sd)return;rendSim(runSim(sd.pct,sd.act),document.getElementById("s2simtbody"));}
-function resetCombined(){document.getElementById("s2out").innerHTML="";document.getElementById("s2sum").style.display="none";document.getElementById("s2sim").style.display="none";document.getElementById("s2pw").style.display="none";document.getElementById("s2pf").style.width="0%";document.getElementById("ewrap").style.display="none";eye=null;RL.clear();updateCnt();}
-
-/* ── INIT ── */
-loadPrefs();
-buildSlotCfg();buildSGrid("sg1");buildSGrid("sg2");
-updateCnt();calcSP();renderAll();
-</script>
+</div><!-- .wrap -->
+<script src="app.js"></script>
 </body>
 </html>
