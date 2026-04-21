@@ -9,7 +9,6 @@
 </head>
 <body>
 <div class="tt" id="tt"></div>
-
 <div class="tb">
   <span class="tb-title" data-i18n="appTitle">Uma Musume - Specialty Priority Tester</span>
   <div class="ltabs">
@@ -19,13 +18,11 @@
   </div>
   <button class="tbtn" onclick="toggleTP()">Theme</button>
 </div>
-
 <div id="notice" class="notice">
   <span class="notice-x" onclick="closeNotice()">×</span>
   <div class="notice-ttl" data-i18n="warnTitle">Notice</div>
   <div data-i18n="warnBody">…</div>
 </div>
-
 <div class="tp" id="tp">
   <div style="font-size:10px;font-weight:700;color:var(--tx2);width:100%">Color Theme</div>
   <div class="tlbl" onclick="applyTheme('blue')"><div class="sw" style="background:#1a6eb5"></div>Blue</div>
@@ -39,10 +36,9 @@
     <input type="color" id="ccolor" value="#1a6eb5" style="width:24px;height:19px;border:1px solid var(--bdr);border-radius:4px;cursor:pointer;padding:0" onchange="applyCustom(this.value)">
   </div>
 </div>
-
 <div class="wrap">
 
-<!-- ── SP CALCULATOR ── -->
+<!-- SP CALCULATOR -->
 <div class="card">
   <div class="sh" onclick="toggleSec('sp')">
     <span class="st" data-i18n="spCardTitle">Specialty Priority Calculator</span>
@@ -54,17 +50,14 @@
       <div class="sp-row">
         <div class="spf"><label data-i18n="spLblSP">SP</label><input type="number" id="spv" value="80" min="0" max="200" oninput="calcSP();savePrefs()"></div>
         <div class="spf"><label data-i18n="spLblUE">UE%</label><input type="number" id="uev" value="20" min="0" max="100" oninput="calcSP();savePrefs()"></div>
-        <div>
-          <div style="font-size:10px;color:#dc2626;font-weight:600;margin-bottom:2px" data-i18n="spLblRes">Result</div>
-          <div class="sp-res" id="sp-res">—</div>
-        </div>
+        <div><div style="font-size:10px;color:#dc2626;font-weight:600;margin-bottom:2px" data-i18n="spLblRes">Result</div><div class="sp-res" id="sp-res">—</div></div>
       </div>
       <div class="sp-steps" id="sp-steps"></div>
     </div>
   </div>
 </div>
 
-<!-- ── CHARACTER LOCK RNG PRESETS ── -->
+<!-- CHARACTER LOCK RNG PRESETS -->
 <div class="card">
   <div class="sh" onclick="toggleSec('pr')">
     <span class="st" data-i18n="presetTitle">Character Lock RNG Presets</span>
@@ -72,17 +65,15 @@
   </div>
   <div id="pr-body">
     <input class="srch" id="csrch" type="text" placeholder="Search…" oninput="filterC(this.value)">
+    <!-- Sort bar -->
+    <div class="sort-bar" id="sortbar"></div>
     <div class="cgrid" id="cgrid"></div>
     <div id="pdet" class="pdet hidden">
-      <!-- BANNER — bg div first (z-index:0), then img (z-index:1), then overlay+text -->
       <div class="pbnr" id="pbnr">
         <div class="pbnr-bg" id="pbnr-bg"></div>
         <img id="pbnr-img" src="" alt="">
         <div class="pbnr-overlay"></div>
-        <div class="pbnr-text">
-          <span class="pbnr-kn" id="pbnr-kn"></span>
-          <span class="pbnr-en" id="pbnr-en"></span>
-        </div>
+        <div class="pbnr-text"><span class="pbnr-kn" id="pbnr-kn"></span><span class="pbnr-en" id="pbnr-en"></span></div>
       </div>
       <div class="pleg">
         <div class="pleg-i"><div class="pleg-d" style="background:#f59e0b"></div><span data-i18n="grJ">Jr</span></div>
@@ -92,12 +83,14 @@
       <div class="pdet-name" id="pd-n"></div>
       <div class="pdet-kana" id="pd-k"></div>
       <div class="glist" id="pd-g"></div>
-      <button class="papp" id="pd-app" onclick="applyPreset()" data-i18n="presetApply">Apply → Lock Goals</button>
+      <!-- custom hint -->
+      <div class="custom-hint" id="custom-hint" data-i18n="customHint">Click cells in the calendar below to manually select locks. Click Apply when done.</div>
+      <button class="papp" id="pd-app" onclick="applyOrCustom()" data-i18n="presetApply">Apply → Lock Goals</button>
     </div>
   </div>
 </div>
 
-<!-- ── COMBINED TEST — always visible ── -->
+<!-- COMBINED TEST -->
 <div class="card">
   <div class="sh" onclick="toggleSec('s2')">
     <span class="st" data-i18n="s2Title">Combined Test (5 Slots)</span>
@@ -106,10 +99,15 @@
   <div id="s2-body">
     <div class="mini-ttl" style="margin-bottom:4px" data-i18n="slotSettings">Slot Settings</div>
     <div class="sgrid" id="scfg"></div>
-    <div class="eye-wrap" id="ewrap">
-      <div class="eye-lbl" data-i18n="eyeLbl">Filter by Slot Color:</div>
-      <div class="eye-row" id="erow"></div>
+    <!-- Lock legend -->
+    <div class="lock-legend" id="locklegend">
+      <div class="lock-legend-i"><div class="ll-box" style="background:repeating-linear-gradient(45deg,#e2e8f0,#e2e8f0 3px,#94a3b8 3px,#94a3b8 4px)"></div><span data-i18n="legendManual">Manual lock</span></div>
+      <div class="lock-legend-i"><div class="ll-box" style="background:#a058c0;border:2px solid #a058c0;opacity:.7"></div><span data-i18n="legendChar">Char lock (preset)</span></div>
     </div>
+    <!-- Grid always visible (no roll needed to see locks) -->
+    <div class="mini-ttl" style="margin-bottom:4px" data-i18n="lockGridTitle">Lock Grid</div>
+    <div id="sg-inline"></div>
+    <div class="eye-wrap" id="ewrap"><div class="eye-lbl" data-i18n="eyeLbl">Filter by Slot Color:</div><div class="eye-row" id="erow"></div></div>
     <div class="srow" style="margin-bottom:7px">
       <div class="fl"><label data-i18n="lblRuns">Test Runs</label>
         <select id="s2runs"><option value="1">1</option><option value="10">10</option><option value="100">100</option></select></div>
@@ -140,7 +138,7 @@
   </div>
 </div>
 
-</div><!-- .wrap -->
+</div>
 <script src="app.js"></script>
 </body>
 </html>
