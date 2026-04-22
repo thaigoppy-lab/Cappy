@@ -104,7 +104,9 @@
       <div class="lock-legend-i"><div class="ll-box" style="background:repeating-linear-gradient(45deg,#e2e8f0,#e2e8f0 3px,#94a3b8 3px,#94a3b8 4px)"></div><span data-i18n="legendManual">Manual lock</span></div>
       <div class="lock-legend-i"><div class="ll-box" style="background:#a058c0;border:2px solid #a058c0;opacity:.7"></div><span data-i18n="legendChar">Char lock (preset)</span></div>
     </div>
-
+    <!-- Grid always visible (no roll needed to see locks) -->
+    <div class="mini-ttl" style="margin-bottom:4px" data-i18n="lockGridTitle">Lock Grid</div>
+    <div id="sg-inline"></div>
     <div class="eye-wrap" id="ewrap"><div class="eye-lbl" data-i18n="eyeLbl">Filter by Slot Color:</div><div class="eye-row" id="erow"></div></div>
     <div class="srow" style="margin-bottom:7px">
       <div class="fl"><label data-i18n="lblRuns">Test Runs</label>
@@ -114,6 +116,7 @@
     </div>
     <div class="hold-hint" data-i18n="holdHint">Hold a cell to see details</div>
     <div class="pw" id="s2pw"><div class="pt" id="s2pt"></div><div class="pb"><div class="pf" id="s2pf"></div></div></div>
+    <div id="s2preview"></div>
     <div id="s2out"></div>
     <div id="s2sum" style="display:none;margin-top:6px">
       <div class="mini-ttl" style="margin-bottom:4px" data-i18n="slotSumTitle">Per-Slot Summary</div>
