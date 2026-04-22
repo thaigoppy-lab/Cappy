@@ -50,6 +50,12 @@ function renderAll(){
   document.querySelectorAll("[data-sk]").forEach(el=>el.textContent=t(el.dataset.sk));
   buildEye();updateCnt();
   if(_selC)_updateBannerText(_selC);
+  // Update credit descriptions by language
+  const isJP=L==="JP";
+  const gtEl=document.getElementById("cr-gt-desc");
+  const utEl=document.getElementById("cr-ut-desc");
+  if(gtEl)gtEl.innerHTML=`<b style="font-size:14px;color:var(--tx)">GameTora</b> — ${isJP?"キャラクター目標データ・キャラクター画像":"Objectives / Goal data & Character images"}`;
+  if(utEl)utEl.innerHTML=`<b style="font-size:14px;color:var(--tx)">U-tools (ウマ娘攻略ツール集)</b> — ${isJP?"キャラクターパーソナルカラーコード":"Character personal color codes"}`;
 }
 
 /* ── THEMES ── */
