@@ -223,7 +223,7 @@ function buildResGrid(pfx,ri,cr){
         if(rl)cls+=" rl";
         const cxHtml=cl?`<div class="cx" style="background:${CL[gi].col};color:#fff;border-radius:2px;padding:0 2px;font-size:6px">★</div>`:lk||rl?'<div class="cx">X</div>':'';
         const goalChars=_GOAL_MAP[gi]||[];
-        const charImgHtml=cl&&CL[gi].slug?`<div class="cell-chars"><div class="cell-char-wrap" title="${CL[gi].name}${CL[gi].races&&CL[gi].races.length?'\n'+CL[gi].races.join(', '):''}"><img class="cell-char-img" src="./umamusumebanner/${CL[gi].slug}.png" alt="${CL[gi].name}" loading="lazy" onerror="this.style.display='none'"><div class="cell-char-dot" style="background:${CL[gi].col}"></div></div><div class="cell-race-name">${CL[gi].races&&CL[gi].races.length?CL[gi].races.join('<br>'):''}</div></div>`:"";
+        const charImgHtml=cl&&CL[gi].slug?`<div class="cell-chars"><div class="cell-char-wrap" title="${CL[gi].name}"><img class="cell-char-img" src="./umamusumebanner/${CL[gi].slug}.png" alt="${CL[gi].name}" loading="lazy" onerror="this.style.display='none'"><div class="cell-char-dot" style="background:${CL[gi].col}"></div></div><div class="cell-race-name">${CL[gi].races&&CL[gi].races.length?CL[gi].races.join('<br>'):''}</div></div>`:"";
         h+=`<div class="${cls}" data-gi="${gi}" data-tt="${ttJSON}" style="${inlineStyle}">${cxHtml}<div class="drow${mc}">${dh}</div>${charImgHtml}<div class="clbl" data-cgi="${gi}">${lb}</div></div>`;
       }
       h+="</div>";
