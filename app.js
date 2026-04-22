@@ -74,6 +74,30 @@ function jrCells(){return[{t:"m",m:3,h:0},{t:"m",m:3,h:0},{t:"m",m:3,h:1},{t:"m"
 function mCells(s,n){const c=[];for(let i=0;i<n;i++)c.push({t:"m",m:(s+Math.floor(i/2))%12,h:i%2});return c;}
 const GD=[{k:"j",cells:jrCells(),cols:4,tg:"j"},{k:"c",cells:mCells(0,24),cols:4,tg:"c"},{k:"s",cells:mCells(0,24),cols:4,tg:"s"},{k:"u",cells:[{t:"u",i:0},{t:"u",i:1},{t:"u",i:2}],cols:3,tg:"s"}];
 const GS={};let _ci=0;GD.forEach(g=>{GS[g.k]=_ci;_ci+=g.cells.length;});const TC=_ci;
+/* ── CHAR-GOAL MAP: gi -> [{slug,name,col,race}] ── */
+function _buildGoalMap(){
+  const map={};for(let gi=0;gi<TC;gi++)map[gi]=[];
+  CHARS.forEach(ch=>{
+    const slug=ch[3],col=CTHEME[slug]||"#4a90d9",name=ch[0];
+    for(let gi2=5;gi2<ch.length;gi2++){
+      const g=ch[gi2];if(!Array.isArray(g)||g.length<4)continue;
+      const[gr,m,h,race]=g;
+      const base=GS[gr];if(base===undefined)continue;
+      const cells=GD.find(x=>x.k===gr)?.cells||[];
+      for(let ci=0;ci<cells.length;ci++){
+        const cell=cells[ci];
+        if(cell.t==="m"&&cell.m===m&&cell.h===h){
+          const gi=base+ci;
+          if(!map[gi].some(x=>x.slug===slug))map[gi].push({slug,name,col,race});
+          break;
+        }
+      }
+    }
+  });
+  return map;
+}
+const _GOAL_MAP=_buildGoalMap();
+
 function shortLbl(gi){for(const g of GD){const s=GS[g.k];if(gi>=s&&gi<s+g.cells.length){const c=g.cells[gi-s];if(c.t==="u")return t("ura")[c.i];return t("M")[c.m]+(c.h===0?t("hE"):t("hL"));}}return "";}
 function fullLbl(gi){for(const g of GD){const s=GS[g.k];if(gi>=s&&gi<s+g.cells.length){const c=g.cells[gi-s];if(c.t==="u")return t("ura")[c.i];return t("M")[c.m]+" "+(c.h===0?t("hE"):t("hL"));}}return "";}
 function _pci(gr,m,h){
@@ -221,7 +245,9 @@ function buildResGrid(pfx,ri,cr){
         }else if(lk)cls+=" locked";
         if(rl)cls+=" rl";
         const cxHtml=cl?`<div class="cx" style="background:${CL[gi].col};color:#fff;border-radius:2px;padding:0 2px;font-size:6px">★</div>`:lk||rl?'<div class="cx">X</div>':'';
-        h+=`<div class="${cls}" data-gi="${gi}" data-tt="${ttJSON}" style="${inlineStyle}">${cxHtml}<div class="drow${mc}">${dh}</div><div class="clbl" data-cgi="${gi}">${lb}</div></div>`;
+        const goalChars=_GOAL_MAP[gi]||[];
+        const charImgHtml=goalChars.length?`<div class="cell-chars">${goalChars.map(ch=>`<div class="cell-char-wrap" title="${ch.name}\n${ch.race}"><img class="cell-char-img" src="./umamusumebanner/${ch.slug}.png" alt="${ch.name}" loading="lazy" onerror="this.style.display='none'"><div class="cell-char-dot" style="background:${ch.col}"></div></div>`).join("")}</div>`:"";
+        h+=`<div class="${cls}" data-gi="${gi}" data-tt="${ttJSON}" style="${inlineStyle}">${cxHtml}<div class="drow${mc}">${dh}</div>${charImgHtml}<div class="clbl" data-cgi="${gi}">${lb}</div></div>`;
       }
       h+="</div>";
     });
