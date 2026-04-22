@@ -828,7 +828,10 @@ function applyPreset(){
     _refreshCellClass(gi);
   });
   updateCnt();savePrefs();
-  // render preview grid immediately
+  // clear old run results and render preview
+  document.getElementById("s2out").innerHTML="";
+  document.getElementById("s2sum").style.display="none";
+  document.getElementById("s2sim").style.display="none";
   _renderPresetPreview();
 }
 function _renderPresetPreview(){
