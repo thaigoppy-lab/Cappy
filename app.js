@@ -826,6 +826,24 @@ function applyPreset(){
     _refreshCellClass(gi);
   });
   updateCnt();savePrefs();
+  // render preview grid immediately
+  _renderPresetPreview();
+}
+function _renderPresetPreview(){
+  const out=document.getElementById("s2out");
+  if(!out)return;
+  // build empty cr (no roll results)
+  const cr={};
+  for(let gi=0;gi<TC;gi++){cr[gi]=[];cr[`_tt_${gi}`]={d:[],o:[],n:[]};}
+  // replace existing preview or insert new one
+  const existing=out.querySelector(".rb.preview");
+  const block=mkRun("preview",0,cr,0,0,0);
+  block.classList.add("preview");
+  // hide the run header stats row (not needed for preview)
+  const rh=block.querySelector(".rh");
+  if(rh)rh.style.display="none";
+  if(existing)out.replaceChild(block,existing);
+  else out.insertBefore(block,out.firstChild);
 }
 
 /* ── INIT ── */
