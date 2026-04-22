@@ -668,18 +668,43 @@ function _sortedChars(arr){
     // JP mode: sort by kana (index 1); otherwise EN (index 0)
     if(_sortKey==="az"){
       if(L==="JP"){
-        // 50音順 sort: normalize dakuten/handakuten then compare
-        const kanaOrder="アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン";
-        function kanaKey(s){
-          return s.split("").map(c=>{
-            // normalize dakuten/handakuten to base
-            const n=c.normalize("NFD").replace(/[\u3099\u309A]/g,"");
-            // katakana to base index
-            const i=kanaOrder.indexOf(n);
-            return i>=0?String.fromCharCode(0x3041+i):c;
-          }).join("");
+        // 50音順: map each kana to its row order (ア行=0, カ行=1, ...)
+        const row50={
+          "ア":0,"イ":0,"ウ":0,"エ":0,"オ":0,
+          "カ":1,"キ":1,"ク":1,"ケ":1,"コ":1,
+          "ガ":1,"ギ":1,"グ":1,"ゲ":1,"ゴ":1,
+          "サ":2,"シ":2,"ス":2,"セ":2,"ソ":2,
+          "ザ":2,"ジ":2,"ズ":2,"ゼ":2,"ゾ":2,
+          "タ":3,"チ":3,"ツ":3,"テ":3,"ト":3,
+          "ダ":3,"ヂ":3,"ヅ":3,"デ":3,"ド":3,
+          "ナ":4,"ニ":4,"ヌ":4,"ネ":4,"ノ":4,
+          "ハ":5,"ヒ":5,"フ":5,"ヘ":5,"ホ":5,
+          "バ":5,"ビ":5,"ブ":5,"ベ":5,"ボ":5,
+          "パ":5,"ピ":5,"プ":5,"ペ":5,"ポ":5,
+          "マ":6,"ミ":6,"ム":6,"メ":6,"モ":6,
+          "ヤ":7,"ユ":7,"ヨ":7,
+          "ラ":8,"リ":8,"ル":8,"レ":8,"ロ":8,
+          "ワ":9,"ヲ":9,"ン":9,
+          "ヴ":0,
+        };
+        const colOrder="アイウエオカキクケコガギグゲゴサシスセソザジズゼゾタチツテトダヂヅデドナニヌネノハヒフヘホバビブベボパピプペポマミムメモヤユヨラリルレロワヲンヴ";
+        function kanaScore(s){
+          const scores=[];
+          for(const c of s){
+            const row=row50[c]??99;
+            const col=colOrder.indexOf(c);
+            scores.push(row*100+(col>=0?col:99));
+          }
+          return scores;
         }
-        v=kanaKey(a[1]).localeCompare(kanaKey(b[1]),"ja");
+        function cmpKana(a,b){
+          const sa=kanaScore(a[1]),sb=kanaScore(b[1]);
+          for(let i=0;i<Math.min(sa.length,sb.length);i++){
+            if(sa[i]!==sb[i])return sa[i]-sb[i];
+          }
+          return sa.length-sb.length;
+        }
+        v=cmpKana(a,b);
       } else {
         v=a[0].localeCompare(b[0]);
       }
