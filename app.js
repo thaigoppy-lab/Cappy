@@ -346,12 +346,12 @@ function resetCombined(){
 /* Personal Colors sourced from official Uma Musume character profiles */
 const CTHEME={
 // Official personal colors from character profiles
-"special-week":"#ff69b4",      // pink (ピンク)
-"silence-suzuka":"#228b22",    // green (緑)
-"tokai-teio":"#ffd700",        // gold/yellow
+"special-week":"#EE6DCB",      // pink (ピンク)
+"silence-suzuka":"#29BD70",    // green (緑)
+"tokai-teio":"#3376D2",        // gold/yellow
 "mejiro-mcqueen":"#9370db",    // purple
-"maruzensky":"#dc143c",        // crimson red
-"fuji-kiseki":"#cc3355",       // rose
+"maruzensky":"#EA504A",        // crimson red
+"fuji-kiseki":"#444745",       // rose
 "oguri-cap":"#6b8e23",         // olive green
 "gold-ship":"#dc143c",         // red (actually red in game)
 "daiwa-scarlet":"#dc143c",     // scarlet red
@@ -359,59 +359,59 @@ const CTHEME={
 "el-condor-pasa":"#daa520",    // golden rod
 "grass-wonder":"#ff8c00",      // dark orange
 "taiki-shuttle":"#008080",     // teal
-"hishi-amazon":"#c71585",      // medium violet red
-"tm-opera-o":"#9932cc",        // dark orchid
-"narita-brian":"#483d8b",      // dark slate blue
+"hishi-amazon":"#2185D0",      // medium violet red
+"tm-opera-o":"#F271C4",        // dark orchid
+"narita-brian":"#75358C",      // dark slate blue
 "air-groove":"#708090",        // slate gray
 "mayano-top-gun":"#ff4500",    // orange red
 "super-creek":"#2e8b57",       // sea green
-"manhattan-cafe":"#8b6914",    // dark goldenrod brown
-"mihono-bourbon":"#cd853f",    // peru/brown
+"manhattan-cafe":"#494541",    // dark goldenrod brown
+"mihono-bourbon":"#EE60A1",    // peru/brown
 "mejiro-ryan":"#4682b4",       // steel blue
-"biwa-hayahide":"#2f4f8f",     // dark blue
+"biwa-hayahide":"#B03D81",     // dark blue
 "rice-shower":"#da70d6",       // orchid pink
-"seiun-sky":"#1e90ff",         // dodger blue
+"seiun-sky":"#65D283",         // dodger blue
 "agnes-tachyon":"#dc143c",     // crimson
 "winning-ticket":"#1e3a8a",    // dark blue
 "nice-nature":"#ff8c00",       // orange
 "sakura-bakushin-o":"#ff1493", // deep pink
-"smart-falcon":"#556b2f",      // dark olive
+"smart-falcon":"#F8587B",      // dark olive
 "matikanefukukitaru":"#8a2be2",// blue violet
-"curren-chan":"#ff3366",        // rose red
-"agnes-digital":"#ff69b4",     // hot pink
-"kawakami-princess":"#c71585", // violet red
-"fine-motion":"#6a0dad",       // purple
-"admire-vega":"#00008b",       // dark blue
-"eishin-flash":"#1e5799",      // dark blue
-"tamamo-cross":"#006400",      // dark green
-"mejiro-dober":"#9932cc",      // dark orchid
-"tosen-jordan":"#1e90ff",      // dodger blue
-"sakura-chiyono-o":"#ff69b4",  // pink
-"inari-one":"#8b008b",         // dark magenta
-"sweep-tosho":"#e91e63",       // pink
-"air-shakur":"#1565c0",        // dark blue
-"bamboo-memory":"#228b22",     // forest green
-"yukino-bijin":"#db7093",      // pale violet red
-"satono-diamond":"#3f51b5",    // indigo
-"mejiro-bright":"#2196f3",     // blue
-"nishino-flower":"#e91e63",    // pink
-"yaeno-muteki":"#4caf50",      // green
-"ines-fujin":"#00bcd4",        // cyan
-"mejiro-palmer":"#1976d2",     // blue
+"curren-chan":"#F86669",        // rose red
+"agnes-digital":"#F37F96",     // hot pink
+"kawakami-princess":"#E146A7", // violet red
+"fine-motion":"#20A95C",       // purple
+"admire-vega":"#3865A1",       // dark blue
+"eishin-flash":"#3D3B3A",      // dark blue
+"tamamo-cross":"#3290D6",      // dark green
+"mejiro-dober":"#19B49E",      // dark orchid
+"tosen-jordan":"#25B8AE",      // dodger blue
+"sakura-chiyono-o":"#BEC1DD",  // pink
+"inari-one":"#AE419E",         // dark magenta
+"sweep-tosho":"#926DDA",       // pink
+"air-shakur":"#2459B4",        // dark blue
+"bamboo-memory":"#366965",     // forest green
+"yukino-bijin":"#AF7E51",      // pale violet red
+"satono-diamond":"#94BF01",    // indigo
+"mejiro-bright":"#45C5C1",     // blue
+"nishino-flower":"#E26ECB",    // pink
+"yaeno-muteki":"#DA483A",      // green
+"ines-fujin":"#F078C5",        // cyan
+"mejiro-palmer":"#27C79C",     // blue
 "matikanetannhauser":"#673ab7",// deep purple
-"hishi-miracle":"#7b1fa2",     // purple
-"narita-top-road":"#0d47a1",   // dark blue
-"jungle-pocket":"#795548",     // brown
-"duramente":"#1a237e",         // dark indigo
-"marvelous-sunday":"#8d6e63",  // brown gray
-"sakura-laurel":"#f06292",     // light pink
+"hishi-miracle":"#4A71B2",     // purple
+"narita-top-road":"#EA5BC0",   // dark blue
+"jungle-pocket":"#6AC43C",     // brown
+"duramente":"#BF3344",         // dark indigo
+"marvelous-sunday":"#CA46B0",  // brown gray
+"sakura-laurel":"#F0638A",     // light pink
 "twin-turbo":"#d32f2f",        // red
-"zenno-rob-roy":"#37474f",     // blue gray
-"neo-universe":"#1565c0",      // blue
-"dantsu-flame":"#b71c1c",      // dark red
-"cesario":"#7e57c2",           // purple
-"orfevre":"#c62828",           // dark red
-"gentildonna":"#e91e63",       // pink
+"zenno-rob-roy":"#5F9B26",     // blue gray
+"neo-universe":"#5ABAE6",      // blue
+"dantsu-flame":"#E97D97",      // dark red
+"cesario":"#948EAB",           // purple
+"orfevre":"#BE4134",           // dark red
+"gentildonna":"#CF2F2B",       // pink
 "kizuna":"#388e3c",            // green
 "harp-star":"#f57c00",         // orange
 "just-a-way":"#1976d2",        // blue
@@ -419,61 +419,62 @@ const CTHEME={
 "lovely-day":"#e64a19",        // deep orange
 "real-steel":"#455a64",        // blue gray
 "mickey-queen":"#ad1457",      // dark pink
-"lucky-lilac":"#7b1fa2",       // purple
-"nakayama-festa":"#ef6c00",    // orange
-"seeking-the-pearl":"#c0392b", // red
-"shinko-windy":"#c0392b",      // red
-"yamanin-zephyr":"#27ae60",    // green
-"aston-machan":"#e53935",      // red
-"transcend":"#ff8f00",         // amber
-"satono-crown":"#2980b9",      // blue
-"cheval-grand":"#1a6eb5",      // blue
-"vivlos":"#8e24aa",            // purple
-"mejiro-ramonu":"#5e35b1",     // deep purple
-"ksmiracle":"#43a047",         // green
-"sounds-of-earth":"#2196f3",   // blue
-"north-flight":"#e91e63",      // pink
-"espoir-city":"#0288d1",       // blue
-"still-in-love":"#e91e63",     // pink
-"verxina":"#6a1b9a",           // purple
-"no-reason":"#4527a0",         // deep purple
-"fusaichi-pandora":"#d81b60",  // pink
-"win-variation":"#00acc1",     // cyan
-"air-messiah":"#1565c0",       // blue
-"bubble-gum-fellow":"#e91e63", // pink
-"durandal":"#3949ab",          // indigo
-"calstone-light-o":"#558b2f",  // green
-"dream-journey":"#6a1b9a",     // purple
-"mr-cb":"#1a237e",             // dark blue
-"symboli-kris-s":"#455a64",    // blue gray
-"daiichi-ruby":"#c62828",      // dark red
-"tanino-gimlet":"#6d4c41",     // brown
-"katsuragi-ace":"#8d6e63",     // brown
+"lucky-lilac":"#454152",       // purple
+"nakayama-festa":"#C0453F",    // orange
+"seeking-the-pearl":"#B02D40", // red
+"shinko-windy":"#63666A",      // red
+"yamanin-zephyr":"#5192C1",    // green
+"aston-machan":"#CF4436",      // red
+"transcend":"#13A9B0",         // amber
+"satono-crown":"#21713A",      // blue
+"cheval-grand":"#64C3C1",      // blue
+"vivlos":"#404FB1",            // purple
+"mejiro-ramonu":"#4BB6AF",     // deep purple
+"ksmiracle":"#85AAE1",         // green
+"sounds-of-earth":"#CA4640",   // blue
+"north-flight":"#CA3B61",      // pink
+"espoir-city":"#D93842",       // blue
+"still-in-love":"#D83A43",     // pink
+"verxina":"#4747CC",           // purple
+"no-reason":"#CB243E",         // deep purple
+"fusaichi-pandora":"#FD637F",  // pink
+"win-variation":"#C1213C",     // cyan
+"air-messiah":"#2C2F9D",       // blue
+"bubble-gum-fellow":"#E5BD00", // pink
+"durandal":"#EFA605",          // indigo
+"calstone-light-o":"#131B4C",  // green
+"dream-journey":"#332D1F",     // purple
+"mr-cb":"#6FC346",             // dark blue
+"symboli-kris-s":"#12762F",    // blue gray
+"daiichi-ruby":"#D2445D",      // dark red
+"tanino-gimlet":"#DAB610",     // brown
+"katsuragi-ace":"#7DB0E0",     // brown
 "hishi-miracle":"#6a1b9a",     // purple
-"rhein-kraft":"#1565c0",       // blue
-"tap-dance-city":"#c62828",    // red
-"daitaku-helios":"#f57f17",    // yellow
-"hokko-tarumae":"#5d4037",     // brown
-"wonder-acute":"#e53935",      // red
-"gran-alegria":"#e53935",      // red
-"fenomeno":"#f57c00",          // orange
-"loves-only-you":"#d81b60",    // pink
-"chrono-genesis":"#5e35b1",    // purple
-"almond-eye":"#1976d2",        // blue
-"stay-gold":"#f9a825",         // yellow/gold
-"kiseki":"#1565c0",            // blue
-"victoire-pisa":"#9c27b0",     // purple
-"buena-vista":"#e91e63",       // pink
-"believe":"#1976d2",           // blue
-"furioso":"#bf360c",           // deep orange
-"admire-groove":"#8d6e63",     // brown
-"sirius-symboli":"#1a237e",    // dark blue
-"narita-taishin":"#3f51b5",    // indigo
-"meisho-doto":"#546e7a",       // blue gray
-"gold-city":"#f9a825",         // amber/gold
-"hishi-akebono":"#37474f",     // dark gray
-"kitasan-black":"#1a237e",     // dark blue
-"mejiro-ardan":"#2e7d32",      // dark green
+"rhein-kraft":"#F15B75",       // blue
+"tap-dance-city":"#D44853",    // red
+"daitaku-helios":"#5B64D5",    // yellow
+"hokko-tarumae":"#D94149",     // brown
+"wonder-acute":"#D85081",      // red
+"gran-alegria":"#53565A",      // red
+"fenomeno":"#574A74",          // orange
+"loves-only-you":"#424840",    // pink
+"chrono-genesis":"#464647",    // purple
+"almond-eye":"#69A9E9",        // blue
+"stay-gold":"#BFB33E",         // yellow/gold
+"kiseki":"#2C9C46",            // blue
+"victoire-pisa":"#4146B8",     // purple
+"buena-vista":"#C0AF3B",       // pink
+"believe":"#4BAECE",           // blue
+"furioso":"#3F54BF",           // deep orange
+"admire-groove":"#344D99",
+"copano-rickey":"#EEB42A",     // brown
+"sirius-symboli":"#248379",    // dark blue
+"narita-taishin":"#E575CE",    // indigo
+"meisho-doto":"#46449B",       // blue gray
+"gold-city":"#245099",         // amber/gold
+"hishi-akebono":"#208BCD",     // dark gray
+"kitasan-black":"#5A6065",     // dark blue
+"mejiro-ardan":"#28BAA5",      // dark green
 "king-halo":"#d32f2f",         // red
 "epiphaneia":"#bf360c",        // deep orange
 "admire-vega":"#0d47a1",       // dark blue
