@@ -687,13 +687,13 @@ function _buildCG(){
   const sorted=_sortedChars(_fC);
   const months=t("M"),hE=t("hE"),hL=t("hL");
   // Add custom lock button first
-  const customCol=_customMode?"var(--c2)":"var(--bdr)";
-  let html=`<button class="cbtn custom-mode${_customMode?" on":""}" onclick="toggleCustomMode()" type="button" style="border-color:${customCol}">
-    <div class="cbtn-imgwrap" style="background:${_customMode?"var(--c3)":"var(--bg)"}">
-      <img class="cbtn-img${_customMode?"":""}" src="./umamusumebanner/${_customMode?"customlock_jp":"customlock_gb"}.png" alt="Custom" loading="lazy" onerror="this.classList.add('img-err')" style="object-position:center;object-fit:contain;padding:4px">
+  const customImg=L==="JP"?"customlock_jp":"customlock_gb";
+  let html=`<button class="cbtn custom-mode" onclick="resetPreset()" type="button" style="border-color:var(--bdr)">
+    <div class="cbtn-imgwrap" style="background:var(--bg)">
+      <img class="cbtn-img" src="./umamusumebanner/${customImg}.png" alt="Reset" loading="lazy" onerror="this.classList.add('img-err')" style="object-position:center;object-fit:contain;padding:4px">
       <div class="cbtn-ph" style="display:none">✏️</div>
     </div>
-    <div class="cbtn-info"><div class="cbtn-name">${_customMode?t("customApply"):t("customMode")}</div></div>
+    <div class="cbtn-info"><div class="cbtn-name">Reset preset</div></div>
   </button>`;
   html+=sorted.map(c=>{
     const idx=CHARS.indexOf(c);
@@ -718,6 +718,19 @@ function _buildCG(){
   el.innerHTML=html;
 }
 
+function resetPreset(){
+  // Clear char locks and selection
+  for(let gi=0;gi<TC;gi++){if(CL[gi]){CL[gi]=null;_refreshCellClass(gi);}}
+  _pLocks.clear();
+  _selC=null;
+  // Clear preview and results
+  document.getElementById("s2preview").innerHTML="";
+  document.getElementById("s2out").innerHTML="";
+  document.getElementById("s2sum").style.display="none";
+  document.getElementById("s2sim").style.display="none";
+  _buildCG();
+  updateCnt();savePrefs();
+}
 function toggleCustomMode(){
   if(_customMode){
     // Apply: clear char locks, keep manual locks for custom-selected cells (already SL)
