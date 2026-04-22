@@ -199,3 +199,9 @@ body{font-family:"Segoe UI",system-ui,sans-serif;color:var(--tx);font-size:14px;
   .pbnr{height:90px}
   .pbnr-en{font-size:13px}
 }
+
+/* ── CELL CHAR IMAGES ── */
+.cell-chars{display:flex;flex-wrap:wrap;justify-content:center;gap:1px;width:100%;margin:2px 0 1px;}
+.cell-char-wrap{position:relative;width:28px;height:28px;flex-shrink:0;}
+.cell-char-img{width:100%;height:100%;object-fit:cover;object-position:top center;border-radius:3px;display:block;}
+.cell-char-dot{position:absolute;bottom:0;right:0;width:6px;height:6px;border-radius:50%;border:1px solid #fff;}
