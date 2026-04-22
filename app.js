@@ -280,7 +280,7 @@ function togSlot(i){slotData[i].en=!slotData[i].en;document.getElementById("tog-
 let s2SimD=[];
 async function runCombined(){
   buildSlotCfg();
-  const runs=+document.getElementById("s2runs").value||1;
+  const runs=1;
   const en=slotData.map((s,i)=>({...s,idx:i})).filter(s=>s.en);
   if(!en.length){alert("Enable at least one slot.");return;}
   const act=getAct();
