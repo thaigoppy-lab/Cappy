@@ -74,29 +74,6 @@ function jrCells(){return[{t:"m",m:3,h:0},{t:"m",m:3,h:0},{t:"m",m:3,h:1},{t:"m"
 function mCells(s,n){const c=[];for(let i=0;i<n;i++)c.push({t:"m",m:(s+Math.floor(i/2))%12,h:i%2});return c;}
 const GD=[{k:"j",cells:jrCells(),cols:4,tg:"j"},{k:"c",cells:mCells(0,24),cols:4,tg:"c"},{k:"s",cells:mCells(0,24),cols:4,tg:"s"},{k:"u",cells:[{t:"u",i:0},{t:"u",i:1},{t:"u",i:2}],cols:3,tg:"s"}];
 const GS={};let _ci=0;GD.forEach(g=>{GS[g.k]=_ci;_ci+=g.cells.length;});const TC=_ci;
-/* ── CHAR-GOAL MAP: gi -> [{slug,name,col,race}] ── */
-function _buildGoalMap(){
-  const map={};for(let gi=0;gi<TC;gi++)map[gi]=[];
-  CHARS.forEach(ch=>{
-    const slug=ch[3],col=CTHEME[slug]||"#4a90d9",name=ch[0];
-    for(let gi2=5;gi2<ch.length;gi2++){
-      const g=ch[gi2];if(!Array.isArray(g)||g.length<4)continue;
-      const[gr,m,h,race]=g;
-      const base=GS[gr];if(base===undefined)continue;
-      const cells=GD.find(x=>x.k===gr)?.cells||[];
-      for(let ci=0;ci<cells.length;ci++){
-        const cell=cells[ci];
-        if(cell.t==="m"&&cell.m===m&&cell.h===h){
-          const gi=base+ci;
-          if(!map[gi].some(x=>x.slug===slug))map[gi].push({slug,name,col,race});
-          break;
-        }
-      }
-    }
-  });
-  return map;
-}
-const _GOAL_MAP=_buildGoalMap();
 
 function shortLbl(gi){for(const g of GD){const s=GS[g.k];if(gi>=s&&gi<s+g.cells.length){const c=g.cells[gi-s];if(c.t==="u")return t("ura")[c.i];return t("M")[c.m]+(c.h===0?t("hE"):t("hL"));}}return "";}
 function fullLbl(gi){for(const g of GD){const s=GS[g.k];if(gi>=s&&gi<s+g.cells.length){const c=g.cells[gi-s];if(c.t==="u")return t("ura")[c.i];return t("M")[c.m]+" "+(c.h===0?t("hE"):t("hL"));}}return "";}
@@ -638,6 +615,30 @@ const CHARS=[
   ["Matikanefukukitaru","マチカネフクキタル","Long","matikanefukukitaru",120,["j", 5, 1, "Make Debut"],["c", 2, 0, "Yayoi Sho"],["c", 4, 1, "Japanese Derby"],["c", 9, 1, "Kikuka Sho"],["s", 2, 0, "Kinko Sho"],["s", 5, 1, "Takarazuka Kinen"],["s", 6, 0, "Hakodate Kinen"],["s", 11, 1, "Arima Kinen"]],
   ["Matikanetannhauser","マチカネタンホイザ","Long","matikanetannhauser",121,["j", 5, 1, "Make Debut"],["c", 3, 0, "Satsuki Sho"],["c", 4, 1, "Japanese Derby"],["c", 9, 1, "Kikuka Sho"],["s", 1, 1, "Diamond Stakes"],["s", 3, 1, "Tenno Sho (Spring)"],["s", 5, 1, "Takarazuka Kinen"],["s", 10, 1, "Japan Cup"],["s", 11, 1, "Arima Kinen"]]
 ]
+/* ── CHAR-GOAL MAP: gi -> [{slug,name,col,race}] ── */
+function _buildGoalMap(){
+  const map={};for(let gi=0;gi<TC;gi++)map[gi]=[];
+  CHARS.forEach(ch=>{
+    const slug=ch[3],col=CTHEME[slug]||"#4a90d9",name=ch[0];
+    for(let gi2=5;gi2<ch.length;gi2++){
+      const g=ch[gi2];if(!Array.isArray(g)||g.length<4)continue;
+      const[gr,m,h,race]=g;
+      const base=GS[gr];if(base===undefined)continue;
+      const cells=GD.find(x=>x.k===gr)?.cells||[];
+      for(let ci=0;ci<cells.length;ci++){
+        const cell=cells[ci];
+        if(cell.t==="m"&&cell.m===m&&cell.h===h){
+          const gi=base+ci;
+          if(!map[gi].some(x=>x.slug===slug))map[gi].push({slug,name,col,race});
+          break;
+        }
+      }
+    }
+  });
+  return map;
+}
+const _GOAL_MAP=_buildGoalMap();
+
 /* ── SORT ── */
 let _sortKey="new",_sortAsc=false; // default: newest first
 let _fC=[...CHARS];
