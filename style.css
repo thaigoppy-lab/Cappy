@@ -1,6 +1,6 @@
 :root{--c2:#1a6eb5;--c4:#0d4f8a;--c3:#d0e8f7;--bg:#f0f6fc;--sur:#fff;--bdr:#b8d4ed;--tx:#0d2137;--tx2:#4a6080;--r:8px;--glass:rgba(255,255,255,0.72);--glass2:rgba(255,255,255,0.55);--glass3:rgba(255,255,255,0.82)}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:"Segoe UI",system-ui,sans-serif;color:var(--tx);font-size:14px;background:var(--bg);min-height:100vh}#bg-img{position:fixed;inset:0;z-index:-1;background-image:url('./umamusumebanner/Background_light.png');background-size:cover;background-position:center;opacity:0.7;pointer-events:none}
+body{font-family:"Segoe UI",system-ui,sans-serif;color:var(--tx);font-size:14px;background:transparent;min-height:100vh}body::after{content:"";position:fixed;inset:0;z-index:-1;background:var(--bg);opacity:0.55;pointer-events:none}#bg-img{position:fixed;inset:0;z-index:-1;background-image:url('./umamusumebanner/Background_light.png');background-size:cover;background-position:center;opacity:0.7;pointer-events:none;transition:background-image 0.3s,opacity 0.3s}
 .tb{background:rgba(26,110,181,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:#fff;padding:7px 11px;display:flex;align-items:center;gap:6px;position:sticky;top:0;z-index:200;box-shadow:0 2px 12px rgba(0,0,0,0.18)}
 .tb-title{font-size:13px;font-weight:700;flex:1;min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
 .ltabs{display:flex;border-radius:6px;overflow:hidden;border:1.5px solid rgba(255,255,255,.4);flex-shrink:0;height:27px}
