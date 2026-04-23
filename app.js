@@ -49,7 +49,34 @@ function renderAll(){
   document.querySelectorAll("[data-rs]").forEach(el=>{const d=JSON.parse(el.dataset.rs);el.innerHTML=`${t("lbRb")}: <b>${d.rb}</b> | ${t("lbOt")}: <b>${d.ot}</b> | ${t("lbNo")}: <b>${d.no}</b>`;});
   document.querySelectorAll("[data-sk]").forEach(el=>el.textContent=t(el.dataset.sk));
   buildEye();updateCnt();
-  if(_selC)_updateBannerText(_selC);
+  if(_selC){
+    _updateBannerText(_selC);
+    // Re-render goal list in new language
+    const months=t("M"),hE=t("hE"),hL=t("hL");
+    const grl={j:t("grJ").split("+")[0].trim(),c:t("grC"),s:t("grS").split("+")[0].trim()};
+    const pdg=document.getElementById("pd-g");
+    if(pdg&&!document.getElementById("pdet").classList.contains("hidden")){
+      const goals=_selC.slice(5);
+      pdg.innerHTML=goals.map(g=>{
+        const mLbl=months[g[1]]+" "+(g[2]===0?hE:hL);
+        const raceName=(L==="JP"&&g[4])?g[4]:g[3];
+        return`<div class="gi"><span class="gg ${g[0]}">${grl[g[0]]||g[0]}</span><span class="gm">${mLbl}</span><span class="gn">${raceName}</span></div>`;
+      }).join("");
+    }
+    // Update CL races and cell-race-name text in lock grid
+    document.querySelectorAll(".cell-race-name").forEach(el=>{
+      const cell=el.closest("[data-gi]");if(!cell)return;
+      const gi=+cell.dataset.gi;
+      if(CL[gi]&&_selC){
+        const newRaces=[];
+        _selC.slice(5).forEach(g=>{
+          const gii=_pci(g[0],g[1],g[2]);
+          if(gii===gi){const rn=(L==="JP"&&g[4])?g[4]:g[3];if(!newRaces.includes(rn))newRaces.push(rn);}
+        });
+        if(newRaces.length){el.innerHTML=newRaces.join("<br>");CL[gi].races=newRaces;}
+      }
+    });
+  }
   // Update credit descriptions by language
   const isJP=L==="JP";
   const gtEl=document.getElementById("cr-gt-desc");
