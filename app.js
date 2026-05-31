@@ -504,6 +504,7 @@ const CTHEME={
 "furioso":"#3F54BF",           // deep orange
 "admire-groove":"#344D99",
 "daring-heart":"#D0BA00",
+"red-desire":"#CB3A43",
 "copano-rickey":"#EEB42A",     // brown
 "sirius-symboli":"#248379",    // dark blue
 "narita-taishin":"#E575CE",    // indigo
@@ -530,6 +531,7 @@ const CTHEME={
 
 /* releaseOrder: index in URL list (0=newest lucky-lilac, higher=older) */
 const CHARS=[
+  ["Red Desire","レッドデジール","Med·Long","red-desire",-3,["j", 5, 1, "Make Debut"],["c", 3, 0, "Oka Sho"],["c", 4, 1, "Japanese Oaks"],["c", 9, 1, "Shuka Sho"],["c", 10, 1, "Japan Cup"],["s", 2, 1, "Osaka Hai"],["s", 4, 0, "Victoria Mile"],["s", 7, 1, "Sapporo Kinen"],["s", 10, 1, "Japan Cup"]],
   ["Daring Heart","ダーリングハート","Mile","daring-heart",-2,["j", 5, 1, "Make Debut"],["j", 11, 0, "Hanshin Juvenile Fillies"],["c", 2, 0, "Fillies' Revue"],["c", 3, 0, "Oka Sho"],["c", 4, 0, "NHK Mile Cup"],["c", 9, 1, "Shuka Sho"],["s", 3, 0, "Hanshin Umamusume Stakes"],["s", 4, 0, "Victoria Mile"],["s", 6, 1, "Queen Stakes"],["s", 9, 0, "Fuchu Umamusume Stakes"],["s", 10, 1, "Mile Championship"]],
   ["Lucky Lilac","ラッキーライラック","Mile·Med","lucky-lilac",0,["j", 5, 1, "Make Debut", "メイクデビュー"],["j", 11, 0, "Hanshin Juvenile Fillies", "阪神ジュベナイルフィリーズ"],["c", 3, 0, "Oka Sho", "桜花賞"],["c", 4, 1, "Japanese Oaks", "オークス"],["c", 9, 1, "Shuka Sho", "秋華賞"],["s", 1, 1, "Nakayama Kinen", "中山記念"],["s", 2, 1, "Osaka Hai", "大阪杯"],["s", 4, 0, "Victoria Mile", "ヴィクトリアマイル"],["s", 10, 0, "Queen Elizabeth II Cup", "エリザベス女王杯"],["s", 10, 1, "Japan Cup", "ジャパンカップ"]],
   ["Victoire Pisa","ヴィクトワールピサ","Med·Long","victoire-pisa",1,["j", 5, 1, "Make Debut", "メイクデビュー"],["j", 11, 1, "Hopeful Stakes", "ホープフルステークス"],["c", 3, 0, "Satsuki Sho", "皐月賞"],["c", 4, 1, "Tokyo Yushun (Japanese Derby)", "東京優駿（日本ダービー）"],["c", 10, 1, "Japan Cup", "ジャパンカップ"],["c", 11, 1, "Arima Kinen", "有馬記念"],["s", 1, 1, "Nakayama Kinen", "中山記念"],["s", 10, 1, "Japan Cup", "ジャパンカップ"],["s", 11, 1, "Arima Kinen", "有馬記念"]],
