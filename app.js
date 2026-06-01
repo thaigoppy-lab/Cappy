@@ -82,7 +82,7 @@ function renderAll(){
   const gtEl=document.getElementById("cr-gt-desc");
   const utEl=document.getElementById("cr-ut-desc");
   if(gtEl)gtEl.innerHTML=`<b style="font-size:14px;color:var(--tx)">GameTora</b> — ${isJP?"キャラクター目標データ・キャラクター画像":"Objectives / Goal data & Character images"}`;
-  if(utEl)utEl.innerHTML=`<b style="font-size:14px;color:var(--tx)">U-tools (ウマ娘攻略ツール集)</b> — ${isJP?"キャラクターパーソナルカラーコード":"Character personal color codes"}`;
+  if(utEl)utEl.innerHTML=`<b style="font-size:14px;color:var(--tx)">U-tools (ウマ娘攻略ツール集)</b> — ${isJP?"キャラクターパーソナルカラーコード":"Character detail"}`;
 }
 
 /* ── THEMES ── */
